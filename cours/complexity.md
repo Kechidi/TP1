@@ -202,3 +202,21 @@ T(n) =
   2 T(\frac{n}{2}) + T_\text{f}(n) & \text{pour $n > 1$}
 \end{cases}
 ```
+
+où $`T_f(n)`$ est le temps d'exécution de l'algorithme `Fusion`. En ce qui concerne ce dernier, on constate que dans les trois boucles `TANTQUE` il y a une itération par élément du tableau. Pareil pour la dernière boucle `POUR`. On a donc
+
+```math
+T_\text{f}(n) = \Theta(n) = a n + b
+```
+
+---
+
+**Exercice** Montrer que $`T(n) = \Theta(n \log n)`$.
+
+  * Commencer par poser $`n = 2^k`$
+  * Montrer par récurrence que
+    ```math
+    T(2^k) = 2^k c + a k 2^k + (2^k - 1) b
+    ```
+
+---
