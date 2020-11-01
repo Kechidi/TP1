@@ -77,14 +77,14 @@ On dit aussi que $`f`$ est « prise en sandwich » entre $`c_1 g`$ et $`c_2 g`$ 
 
 ---
 
-$`\Theta(g(n))` est un ensemble de fonctions et la notation mathématiquement correcte est $`f(n) \in \Theta(g(n))`$ mais on note $`f(n) = \Theta(g(n))`$ par abus.
+$`\Theta(g(n))`$ est un ensemble de fonctions et la notation mathématiquement correcte est $`f(n) \in \Theta(g(n))`$ mais on note $`f(n) = \Theta(g(n))`$ par abus.
 
 ---
 
 **Exercice 1.** Montrer que :
 
   * $`\frac{1}{2} n^2 - 3 n = \Theta(n^2)`$
-  * $`6 n^3 \ne \Theta(n^2)`$
+  * $`6 n^3 \neq \Theta(n^2)`$
 
 ---
 
@@ -93,7 +93,7 @@ $`\Theta(g(n))` est un ensemble de fonctions et la notation mathématiquement co
 $`O(g(n))`$ est *l'ensemble* des fonctions $`f(n)`$ pour lesquelles il existe des constantes positives $`c, n_0`$, telles que :
 
 ```math
-0 \le \le f(n) \le c g(n) \text{ pour tout } n \ge n_0
+0 \le f(n) \le c g(n) \text{ pour tout } n \ge n_0
 ```
 
 ---
@@ -106,4 +106,4 @@ Il est évident que si $`f(n) = \Theta(g(n))`$ alors $`f(n) = O(g(n))`$ et donc 
 
 ---
 
-Souvent on parle de la complexité des algorithmes en termes de $`O`$ et pas de $`\Theta`$. On peut dire que notre algorithme de tri par insertion s'exécute *toujours* en $`O(n^2)`$ et en $`\Theta(n^2)`$ *au pire des cas.
+Souvent on parle de la complexité des algorithmes en termes de $`O`$ et pas de $`\Theta`$. On peut dire que notre algorithme de tri par insertion s'exécute *toujours* en $`O(n^2)`$ et en $`\Theta(n^2)`$ *au pire des cas*.
