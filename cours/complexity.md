@@ -1,6 +1,6 @@
 # Complexité des algorithmes
 
-Rappel sur le tri d'insertion :
+Rappel sur le tri par insertion :
 
 1. Le cas le plus favorable : tableau trié.
 
@@ -40,7 +40,7 @@ L'analyse asymptotique est un moyen de comparer les performances *relatives* des
 
 ---
 
-**Exemple 1.** Considérons trois algorithmes :
+**Exemple** Considérons trois algorithmes :
 
   * A1 de complexité $`\Theta(n^2)`$
   * A2 de complexité $`\Theta(n^3)`$
@@ -50,7 +50,7 @@ On peut dire que A1 est meilleur que A2 *pour les entrés de grande taille*. Mai
 
 ---
 
-**Exemple 2.** Les termes d'ordre inférieur sont peu importants *pour les entrées de grande taille*
+**Exemple** Les termes d'ordre inférieur sont peu importants *pour les entrées de grande taille*
 
 ```math
 T(n) = 0,1 n^2 + 1000 n + 100000
@@ -65,7 +65,7 @@ Pour $`n = 10`$ le terme linéaire est 1000 fois plus grand que le terme quadrat
 
 ---
 
-**Définition 1.** Soit $`g(n)`$ une fonction.
+**Définition** Soit $`g(n)`$ une fonction.
 
 $`\Theta(g(n))`$ est *l'ensemble* des fonctions $`f(n)`$ pour lesquelles il existe des constantes positives $`c_1, c_2, n_0`$, telles que :
 
@@ -81,14 +81,14 @@ $`\Theta(g(n))`$ est un ensemble de fonctions et la notation mathématiquement c
 
 ---
 
-**Exercice 1.** Montrer que :
+**Exercice** Montrer que :
 
   * $`\frac{1}{2} n^2 - 3 n = \Theta(n^2)`$
   * $`6 n^3 \neq \Theta(n^2)`$
 
 ---
 
-**Définition 2.** Soit $`g(n)`$ une fonction.
+**Définition** Soit $`g(n)`$ une fonction.
 
 $`O(g(n))`$ est *l'ensemble* des fonctions $`f(n)`$ pour lesquelles il existe des constantes positives $`c, n_0`$, telles que :
 
@@ -102,7 +102,7 @@ Il est évident que si $`f(n) = \Theta(g(n))`$ alors $`f(n) = O(g(n))`$ et donc 
 
 ---
 
-**Exercice 2.** Montrer que $`n^2 = O(n^3)`$  mais $`n^2 \neq O(n^3)`$
+**Exercice** Montrer que $`n^2 = O(n^3)`$  mais $`n^2 \neq O(n^3)`$
 
 ---
 
@@ -134,7 +134,7 @@ ENTRÉE :
   debut - indice du premier élément
   fin - indice du dernier élément
 SORTIE :
-  La partie a[debut..fin] du tableau est trié
+  Le sous-tableau a[debut ... fin] est trié
 TAILLE :
   fin - debut + 1
 
@@ -146,4 +146,59 @@ DEBUT
     Fusion(a, debut, milieu, fin)
   FINSI
 FIN     
+```
+
+```
+ALGORITHME Fusion(a, debut, milieu, fin)
+ENTRÉE :
+  a - un tableau
+  debut <= milieu <= fin : indices dans le tableau
+  les sous-tableaux a[debut ... milieu] et a [milieu + 1 ... fin] sont triés
+  SORTIE :
+    Le sous-tableau a[debut ... fin] est trié
+  TAILLE :
+    fin - debut + 1
+
+DEBUT
+  i <- debut
+  j <- milieu + 1
+  k <- 0
+
+  TANTQUE i <= milieu et j <= fin FAIRE
+    SI a[i] < a[j] ALORS
+      tmp[k] <- a[i]
+      i <- i + 1
+    SINON
+      tmp[k] <- a[j]
+      j <- j + 1
+    FINSI
+    k <- k + 1
+  FINTANTQUE
+
+  TANTQUE i <= milieu
+    tmp[k] <- a[i]
+    i <- i + 1
+    k <- k + 1
+  FINTANTQUE
+
+  TANTQUE j <= fin
+    tmp[k] <- a[j]
+    j <- j + 1
+    k <- k + 1
+  FINTANTQUE
+
+  POUR i de debut à fin FAIRE
+    a[i] <- tmp[i - debut]
+  FINPOUR
+FIN
+```
+
+Soit $`T(n)`$ le temps d'exécution de l'algorithme `TriFusion` pour une entrée de taille $`n`$. On peut facilement voir que
+
+```math
+T(n) =
+\begin{cases}
+c & text{pour $n = 1$}
+2 T(\frac{n}{2} + T_f(n)) & \text{pour $n > 0}
+\end{cases}
 ```
