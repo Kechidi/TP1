@@ -34,7 +34,7 @@ Rappelons la démarche qu'on a suivi :
 
 3. Éliminer les termes d'ordre inférieur et ignorer le coefficient du terme d'ordre supérieur :
 
-  $`T(n) = \Theta(n^2)` (ordre de grandeur quadratique)
+  $`T(n) = \Theta(n^2)`$ (ordre de grandeur quadratique)
 
 L'analyse asymptotique est un moyen de comparer les performances *relatives* des algorithmes.
 
@@ -56,4 +56,6 @@ On peut dire que A1 est meilleur que A2 *pour les entrés de grande taille*. Mai
 T(n) = 0,1 n^2 + 1000 n + 100000
 ```
 
-Pour $`n = 10`$ le terme linéaire est 1000 fois plus grand que le terme quadratique. Mais pour $`n = 1\;000\;000` le terme linéaire est 100 fois *plus petit* que le terme quadratique. Plus $`n`$ est grand, plus les termes d'ordre supérieur sont importants, quels que soient les coefficients.
+Pour $`n = 10`$ le terme linéaire est 1000 fois plus grand que le terme quadratique. Mais pour $`n = 1\;000\;000`$ le terme linéaire est 100 fois *plus petit* que le terme quadratique. Plus $`n`$ est grand, plus les termes d'ordre supérieur sont importants, quels que soient les coefficients.
+
+---
