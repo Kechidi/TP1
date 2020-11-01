@@ -67,10 +67,43 @@ Pour $`n = 10`$ le terme linéaire est 1000 fois plus grand que le terme quadrat
 
 **Définition 1.** Soit $`g(n)`$ une fonction.
 
-$`Theta(g(n))`$ est *l'ensemble* des fonctions $`f(n)`$ pour lesquelles il existe des constantes positives $`c_1, c_2, n_O`, telles que :
+$`\Theta(g(n))`$ est *l'ensemble* des fonctions $`f(n)`$ pour lesquelles il existe des constantes positives $`c_1, c_2, n_0`$, telles que :
 
 ```math
 0 \le c_1 g(n) \le f(n) \le c_2 g(n) \text{ pour tout } n \ge n_0
 ```
 
+On dit aussi que $`f`$ est « prise en sandwich » entre $`c_1 g`$ et $`c_2 g`$ pour $`n`$ assez grand ou encore que $`f`$ est égale à $`g`$ à un facteur constant près.
+
 ---
+
+$`\Theta(g(n))` est un ensemble de fonctions et la notation mathématiquement correcte est $`f(n) \in \Theta(g(n))`$ mais on note $`f(n) = \Theta(g(n))`$ par abus.
+
+---
+
+**Exercice 1.** Montrer que :
+
+  * $`\frac{1}{2} n^2 - 3 n = \Theta(n^2)`$
+  * $`6 n^3 \ne \Theta(n^2)`$
+
+---
+
+**Définition 2.** Soit $`g(n)`$ une fonction.
+
+$`O(g(n))`$ est *l'ensemble* des fonctions $`f(n)`$ pour lesquelles il existe des constantes positives $`c, n_0`$, telles que :
+
+```math
+0 \le \le f(n) \le c g(n) \text{ pour tout } n \ge n_0
+```
+
+---
+
+Il est évident que si $`f(n) = \Theta(g(n))`$ alors $`f(n) = O(g(n))`$ et donc $`\Theta(g(n)) \subseteq O(g(n))`$ mais l’inverse n'est pas vrai.
+
+---
+
+**Exercice 2.** Montrer que $`n^2 = O(n^3)`$  mais $`n^2 \ne O(n^3)`$
+
+---
+
+Souvent on parle de la complexité des algorithmes en termes de $`O`$ et pas de $`\Theta`$. On peut dire que notre algorithme de tri par insertion s'exécute *toujours* en $`O(n^2)`$ et en $`\Theta(n^2)`$ *au pire des cas.
