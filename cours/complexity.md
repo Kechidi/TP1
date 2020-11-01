@@ -203,7 +203,7 @@ T(n) =
 \end{cases}
 ```
 
-où $`T_f(n)`$ est le temps d'exécution de l'algorithme `Fusion`. En ce qui concerne ce dernier, on constate que dans les trois boucles `TANTQUE` il y a une itération par élément du tableau. Pareil pour la dernière boucle `POUR`. On a donc
+où $`T_\text{f}(n)`$ est le temps d'exécution de l'algorithme `Fusion`. En ce qui concerne ce dernier, on constate que dans les trois boucles `TANTQUE` il y a une itération par élément du tableau. Pareil pour la dernière boucle `POUR`. On a donc
 
 ```math
 T_\text{f}(n) = \Theta(n) = a n + b
@@ -218,5 +218,26 @@ T_\text{f}(n) = \Theta(n) = a n + b
     ```math
     T(2^k) = 2^k c + a k 2^k + (2^k - 1) b
     ```
+  *En conclure que $`T(n) = \Theta(n \log n)`$
 
+---
+
+À noter qu'on peut omettre la base du logarithme car le changement de base revient à la multiplication par une constante.
+
+---
+
+**Exercice** Nous avons deux ordinateurs :
+
+  * Ordinateur A capable d'exécuter $`10^9`$ (1 milliard) d'instructions par seconde
+  * Ordinateur B capable d'exécuter $`10^7`$ (10 millions) d'instructions par seconde
+
+A est donc 100 fois plus rapide que B.
+
+Le tri par insertion est implémenté en un langage de bas niveau et très optimisé. Pour une entrée de taille $`n`$ il exécute $`2 n^2`$ instructions au pire des cas.
+
+Le tri par fusion est implémenté en un langage interprété et pas du tout optimisé. Il exécute $`50 n \log_2 n`$ instructions pour une entrée de taille $`n`$.
+
+On exécute le tri par insertion sur l'ordinateur rapide A et le tri par fusion sur l'ordinateur lent B.
+
+Estimer le temps d'exécution des deux algorithmes pour des tableaux de taille 1 million et 10 millions.
 ---
