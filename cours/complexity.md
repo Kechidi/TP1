@@ -59,3 +59,18 @@ T(n) = 0,1 n^2 + 1000 n + 100000
 Pour $`n = 10`$ le terme linéaire est 1000 fois plus grand que le terme quadratique. Mais pour $`n = 1\;000\;000`$ le terme linéaire est 100 fois *plus petit* que le terme quadratique. Plus $`n`$ est grand, plus les termes d'ordre supérieur sont importants, quels que soient les coefficients.
 
 ---
+
+
+## Notations asymptotiques
+
+---
+
+**Définition 1.** Soit $`g(n)`$ une fonction.
+
+$`Theta(g(n))`$ est *l'ensemble* des fonctions $`f(n)`$ pour lesquelles il existe des constantes positives $`c_1, c_2, n_O`, telles que :
+
+```math
+0 \le c_1 g(n) \le f(n) \le c_2 g(n) \text{ pour tout } n \ge n_0
+```
+
+---
