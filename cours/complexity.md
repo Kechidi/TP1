@@ -198,7 +198,7 @@ Soit $`T(n)`$ le temps d'exécution de l'algorithme `TriFusion` pour une entrée
 ```math
 T(n) =
 \begin{cases}
-c & \text{si} \\
+c & \text{pour $n = 1$} \\
 c & d
 \end{cases}
 ```
