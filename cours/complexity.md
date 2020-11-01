@@ -84,7 +84,7 @@ $`\Theta(g(n))`$ est un ensemble de fonctions et la notation mathématiquement c
 **Exercice 1.** Montrer que :
 
   * $`\frac{1}{2} n^2 - 3 n = \Theta(n^2)`$
-  * $`6 n^3 \not\= \Theta(n^2)`$
+  * $`6 n^3 \not= \Theta(n^2)`$
 
 ---
 
