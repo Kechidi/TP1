@@ -107,3 +107,14 @@ Il est évident que si $`f(n) = \Theta(g(n))`$ alors $`f(n) = O(g(n))`$ et donc 
 ---
 
 Souvent on parle de la complexité des algorithmes en termes de $`O`$ et pas de $`\Theta`$. On peut dire que notre algorithme de tri par insertion s'exécute *toujours* en $`O(n^2)`$ et en $`\Theta(n^2)`$ *au pire des cas*.
+
+
+**Propriétés**
+
+  * Transitivité : si $`f(n) = \Theta(g(n))`$ et $`g(n) = \Theta(h(n))`$ alors $`f(n) = \Theta(h(n))`$. Idem pour $`O`$.
+
+  * Réflexivité : $`f(n) = \Theta(f(n))`$. Idem pour $`O`$.
+
+  * Symétrie : $`f(n) = \Theta(g(n)) \text{ ssi } g(n) = \Theta(f(n))`$. Pas de symétrie pour $`O`$, pourquoi ?
+
+  * $`\sum_{i = 0}{d} a_i n^i = \Theta(n^d)`$
