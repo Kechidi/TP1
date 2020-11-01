@@ -84,7 +84,7 @@ $`\Theta(g(n))`$ est un ensemble de fonctions et la notation mathématiquement c
 **Exercice 1.** Montrer que :
 
   * $`\frac{1}{2} n^2 - 3 n = \Theta(n^2)`$
-  * $`6 n^3 \not = \Theta(n^2)`$
+  * $`6 n^3 \neq \Theta(n^2)`$
 
 ---
 
@@ -102,7 +102,7 @@ Il est évident que si $`f(n) = \Theta(g(n))`$ alors $`f(n) = O(g(n))`$ et donc 
 
 ---
 
-**Exercice 2.** Montrer que $`n^2 = O(n^3)`$  mais $`n^2 \ne O(n^3)`$
+**Exercice 2.** Montrer que $`n^2 = O(n^3)`$  mais $`n^2 \neq O(n^3)`$
 
 ---
 
