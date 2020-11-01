@@ -99,7 +99,7 @@ T_\text{f}(n) = \Theta(n) = a n + b
     ```math
     T(2^k) = 2^k c + a k 2^k + (2^k - 1) b
     ```
-  *En conclure que $`T(n) = \Theta(n \log n)`$
+  * En conclure que $`T(n) = \Theta(n \log n)`$
 
 ---
 
@@ -114,11 +114,13 @@ T_\text{f}(n) = \Theta(n) = a n + b
 
 A est donc 100 fois plus rapide que B.
 
-Le tri par insertion est implémenté en un langage de bas niveau et très optimisé. Pour une entrée de taille $`n`$ il exécute $`2 n^2`$ instructions au pire des cas.
+Nous avons deux algorithmes de tri :
 
-Le tri par fusion est implémenté en un langage interprété et pas du tout optimisé. Il exécute $`50 n \log_2 n`$ instructions pour une entrée de taille $`n`$.
+  * Tri par insertion implémenté en un langage de bas niveau et très optimisé. Pour une entrée de taille $`n`$ il exécute $`2 n^2`$ instructions au pire des cas.
+  * Tri par fusion implémenté en un langage interprété et pas du tout optimisé. Il exécute $`50 n \log_2 n`$ instructions pour une entrée de taille $`n`$.
 
 On exécute le tri par insertion sur l'ordinateur rapide A et le tri par fusion sur l'ordinateur lent B.
 
 Estimer le temps d'exécution des deux algorithmes pour des tableaux de taille 1 million et 10 millions.
+
 ---
