@@ -8,11 +8,11 @@ Rappel sur le tri d'insertion :
 
 2. Le cas le plus défavorable : tableau trié en sens inverse
 
-    $`T(n) = a' n^2 + b' n + c`$ - fonction quadratique
+    $`T(n) = a' n^2 + b' n + c'`$ - fonction quadratique
 
 3. Le cas moyen
 
-    $`T(n) = a" n^2 + b" n + c`$ - fonction quadratique
+    $`T(n) = a'' n^2 + b'' n + c''`$ - fonction quadratique
 
 
 Le plus souvent on considère le temps d'exécution dans le pire des cas parce que :
