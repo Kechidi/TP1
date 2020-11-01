@@ -117,4 +117,33 @@ Souvent on parle de la complexité des algorithmes en termes de $`O`$ et pas de 
 
   * Symétrie : $`f(n) = \Theta(g(n)) \text{ ssi } g(n) = \Theta(f(n))`$. Pas de symétrie pour $`O`$, pourquoi ?
 
-  * $`\sum_{i = 0}{d} a_i n^i = \Theta(n^d)`$
+  * $`\sum_{i = 0}^{d} a_i n^i = \Theta(n^d)`$
+
+## Analyse du tri par fusion
+
+Un algorithme basé sur le principe « diviser pour régner » :
+
+  * Diviser le problème initial en plusieurs sous-problèmes plus faciles à résoudre (de façon récursive).
+
+  * Combiner les solutions des sous-problèmes pour obtenir la solution du problème initial.
+
+```
+ALGORITHME TriFusion(a, debut, fin)
+ENTRÉE :
+  a - un tableau
+  debut - indice du premier élément
+  fin - indice du dernier élément
+SORTIE :
+  La partie a[debut..fin] du tableau est trié
+TAILLE :
+  fin - debut + 1
+
+DEBUT
+  SI debut < fin ALORS
+    milieu <- (debut + fin) / 2
+    TriFusion(a, debut, milieu)
+    TriFusion(a, milieu + 1, fin)
+    Fusion(a, debut, milieu, fin)
+  FINSI
+FIN     
+```
