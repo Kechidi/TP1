@@ -102,7 +102,7 @@ Il est évident que si $`f(n) = \Theta(g(n))`$ alors $`f(n) = O(g(n))`$ et donc 
 
 ---
 
-**Exercice** Montrer que $`n^2 = O(n^3)`$  mais $`n^2 \neq O(n^3)`$
+**Exercice** Montrer que $`n^2 = O(n^3)`$  mais $`n^2 \neq \Theta(n^3)`$
 
 ---
 
