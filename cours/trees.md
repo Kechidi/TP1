@@ -166,3 +166,20 @@ Un arbre binaire *complet* est un arbre dans lequel tous les nœuds sont de degr
   - Quel est le nombre de nœuds dans un arbre complet de hauteur $`h`$ ?
 
 ---
+
+
+### Propriétés des arbres binaires
+
+---
+
+**Proposition**
+  - Le nombre maximal de nœuds de niveau $`i`$ est $`2^i`$
+  - Le nombre maximal de nœuds d'un arbre de hauteur $`h`$ est $`2^{h + 1} - 1`$
+
+---
+
+**Proposition** Pour un arbre binaire de $`n`$ nœuds et de hauteur $`h`$
+
+```math
+\left\lceil \log_2 n \right\rceil \le h \le n - 1
+```
