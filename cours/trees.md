@@ -152,3 +152,17 @@ graph TD
   linkStyle 6 stroke:#0000
   linkStyle 8 stroke:#0000
 ```
+
+### Arbres binaires particuliers
+
+Un arbre binaire *dégénéré* est un arbre binaire de degré inférieur où égal à 1.
+
+Un arbre binaire *complet* est un arbre dans lequel tous les nœuds sont de degré 2 sauf ceux du dernier niveau.
+
+---
+
+**Exercice**
+  - Quel est le nombre de nœuds dans un arbre dégénéré de hauteur $`h`$ ?
+  - Quel est le nombre de nœuds dans un arbre complet de hauteur $`h`$ ?
+
+---
