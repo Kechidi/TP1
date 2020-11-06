@@ -181,5 +181,5 @@ Un arbre binaire *complet* est un arbre dans lequel tous les nœuds sont de degr
 **Proposition** Pour un arbre binaire de $`n`$ nœuds et de hauteur $`h`$
 
 ```math
-\left\lceil \log_2 n \right\rceil \le h \le n - 1
+\left\lfloor \log_2 n \right\rfloor \le h \le n - 1
 ```
