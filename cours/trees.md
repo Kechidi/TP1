@@ -67,3 +67,65 @@ Par analogie on peut définir d'autres relations de parenté, telles que grand-p
 **Définition** Le *niveau* de la racine est 0. Le niveau d'un nœud est le niveau de son père + 1. Le niveau (la *hauteur*) d'un arbre est le maximum des niveaux de ses nœuds.
 
 ---
+
+## Représentation dans la mémoire
+
+### Par listes
+
+```
+(racine (sous-arbre 1) ... (sous-arbre n))
+```
+
+### Avec pointeurs (représentation chaînée)
+
+Chaque nœud à les champs suivants :
+  - donnée
+  - pointeur vers le père
+  - pointeur vers le premier fils
+  - pointeur vers le frère précédent
+  - pointeur vers le frère suivant
+
+## Arbres binaires
+
+Les *arbres binaires* sont des arbres de degré inférieur ou égal à 2. Chaque nœud a au plus deux fils :
+
+```mermaid
+graph TD
+  père --- g[fils gauche] & d[fils droit]
+```
+
+### Représentation d'un arbre général par un arbre binaire
+
+Le premier fils devient le fils gauche, le frère suivant devient fils droit.
+
+**Exemple** L'arbre
+
+```mermaid
+graph TD
+  A --- B & C & D
+  C --- E & F & G
+```
+
+devient
+
+```mermaid
+graph TD
+  A --- B
+  A --- A1[ ]
+  B --- B1[ ]
+  B -.- C
+  C --- E
+  C -.- D
+  E --- E1[ ]
+  E -.- F
+  F --- F1[ ]
+  F -.- G
+
+  classDef invisible fill:#0000, stroke:#0000;
+  class A1,B1,E1,F1 invisible;
+
+  linkStyle 1 stroke:#0000
+  linkStyle 2 stroke:#0000
+  linkStyle 6 stroke:#0000
+  linkStyle 8 stroke:#0000
+```
