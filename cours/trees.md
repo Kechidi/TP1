@@ -93,7 +93,7 @@ graph TD
 
 ## Représentation dans la mémoire
 
-### Par listes
+### Avec des listes
 
 ```
 (racine (sous-arbre 1) ... (sous-arbre n))
@@ -183,3 +183,37 @@ Un arbre binaire *complet* est un arbre dans lequel tous les nœuds sont de degr
 ```math
 \left\lfloor \log_2 n \right\rfloor \le h \le n - 1
 ```
+
+### Représentation dans la mémoire d'un arbre binaire
+
+#### Avec un tableau
+
+```mermaid
+graph TD
+  0 --- 1 & 2
+  1 --- 3 & 4
+  2 --- 5 & 6
+  3 --- 7 & 8
+  4 --- 9 & 10
+  5 --- 11 & 12
+  6 --- 13 & 14
+```
+
+---
+
+**Exercice** Soit $`i`$ l'indice d'un nœud.
+  * Quel est l'indice de son fils gauche ?
+  * Quel est l'indice de son fils droit ?
+  * Quel est l'indice de son père ?
+
+---
+
+#### Représentation chaînée
+
+Chaque nœud a des pointeurs vers son père, son fils gauche et son fils droit.
+
+Soit `x` un nœud. On va noter :
+  - `x.cle` : la clé (la donnée) stocké dans `x`
+  - `x.pere` : le père de `x` (`null` si `x` est la racine)
+  - `x.gauche` : le fils gauche de `x` (`null` si `x` n'a pas de fils gauche)
+  - `x.droit` : le fils droit de `x` (`null` si `x` n'a pas de fils droit)
