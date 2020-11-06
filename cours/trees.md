@@ -1,11 +1,38 @@
 # Arbres
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+De façon informelle, un arbre est un ensemble de nœuds organisés hiérarchiquement autour d'un nœud central appelé racine. Le terme exact est *arborescence* mais on utilisera arbre par abus de langage.
+
+**Exemple** Système de fichiers
+
+```
+/
+├── bin
+├── boot
+│   ├── efi
+│   └── grub
+├── dev
+│   ├── block
+│   ├── bus
+│   ├── usb
+│   └── wmi
+├── home
+│   └── stefan
+└── var
+    ├── backups
+    ├── cache
+    ├── crash
+    ├── lib
+    ├── local
+    └── tmp
+```
+
+**Exemple** Représentation d'une expression : $`3x - (2-y)(5 + z)`$
 
 ```mermaid
-graph TD;
-  A-->B;
-  A-->C;
-  B-->D;
-  C-->D;
+graph TD
+  op1(("-")) --- op2(("*")) & op3(("*"))
+  op2 --- 3 & x
+  op3 --- op4(("-")) & op5(("+"))
+  op4 --- 2 & y
+  op5 --- 5 & z
 ```
