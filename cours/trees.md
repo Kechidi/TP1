@@ -68,6 +68,29 @@ Par analogie on peut définir d'autres relations de parenté, telles que grand-p
 
 ---
 
+**Exercice**
+
+```mermaid
+graph TD
+  A --- B & C & D
+  B --- E & F
+  C --- G
+  D --- H & I & J & K
+  E --- L & M
+  H --- N & O & P
+```
+
+  * Quelle est la racine de cet arbre ?
+  * Quels sont les sous-arbres de B ?
+  * Quel est le degré de la racine ? De l'arbre ?
+  * Quelles sont les feuilles ?
+  * Quels sont les descendants de B ?
+  * Quels sont les ancêtres de P ?
+  * Quels sont les cousins de H ?
+  * Quels sont les oncles de G ?
+  * Quels sont les nœuds de niveau 3 ?
+  * Quelle est la hauteur de l'arbre ?
+
 ## Représentation dans la mémoire
 
 ### Par listes
