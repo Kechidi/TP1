@@ -44,7 +44,7 @@ Quel parcours permet de visiter les clés dans l'ordre ? Quelle est sa complexit
 
 ---
 
-**Exemple** Recherche de 25 et 8 dans l'arbre suivant
+**Exercice** Rechercher 25 et 8 dans l'arbre suivant
 
 ```mermaid
 graph TD
@@ -91,7 +91,7 @@ Noeud rechercher(cle k) {
 Au pire on effectue une descente de la racine à une feuille au dernier niveau de l'arbre. La complexité est donc $`O(h)`$. Si on veut exprimer cela en fonction du nombre de nœuds $`n`$, rappelons-nous que la hauteur est entre $`\log n`$ est $`n`$. Donc au pire des cas on est à $`O(n)`$.
 
 
-## Minimum est maximum
+## Minimum et maximum
 
 ```java
 Noeus minimum(Noeud x) {
@@ -102,4 +102,32 @@ Noeus minimum(Noeud x) {
 
 **Complexité :** $`O(h)`$
 
- 
+
+## Successeur et prédécesseur (dans l'ordre des clés)
+
+**Exercice** Trouver les successeurs de 29, 25, et 39 dans l'arbre
+
+```mermaid
+graph TD
+  29((29)) --- 11((11)) & 35((35))
+  11 --- 5((5)) & 13((13))
+  35 --- 33((33)) & 39((39))
+  5 --- 3((3)) & 7((7))
+  13 --- i[ ]:::invisible & 25((25))
+
+  classDef invisible fill:#0000, stroke:#0000;
+  linkStyle 8 stroke:#0000
+```
+
+```java
+Noeud successeur(Noeud x) {
+  if (x.droit != null) return minimum(x.droit);
+  y = x.pere;
+  while (y != null && x = y.droit) {
+    x = y;
+    y = y.pere;
+  }
+}
+```
+
+**Complexité :** $`O(h)`$
