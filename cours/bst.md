@@ -18,12 +18,12 @@ graph TD
 
 ```mermaid
 graph TD
-  subgraph a
+  subgraph a[ ]
     9a((9)) --- 5a((5)) & 13a((13))
     5a --- 3a((3)) & 9aa((9))
     13a --- i1[ ] & 15a((13))
   end
-  subgraph b
+  subgraph b[ ]
     3b((3)) --- i2[ ] & 5b((5))
     5b((5)) --- i3[ ] & 13b((13))
     13b --- 9b((9)) & 15b((15))
