@@ -184,6 +184,8 @@ Un arbre binaire *complet* est un arbre dans lequel tous les nœuds sont de degr
 \left\lfloor \log_2 n \right\rfloor \le h \le n - 1
 ```
 
+---
+
 ### Représentation dans la mémoire d'un arbre binaire
 
 #### Avec un tableau
