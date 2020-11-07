@@ -131,3 +131,33 @@ Noeud successeur(Noeud x) {
 ```
 
 **Complexité :** $`O(h)`$
+
+
+## Ajout d'une clé
+
+---
+
+**Exercice** En partant d'un arbre vide, ajouter les clés 23, 35, 9, 37, 29, 3, 17, 33, 25 dans cet ordre.
+
+---
+
+```java
+ajouter(Noeud z) {
+  y = null;
+  x = racine;
+  while (x != null) {
+    y = x;
+    x = z.cle < x.cle ? x.gauche : x.droit;
+  }
+  z.pere = y;
+  if (y == null) { // arbre vide
+    racine = z;
+  } else {
+    if (z.cle < y.cle) y.gauche = z;
+    else y.droit = z;
+  }
+  z.gauche = z.droit = null;
+}
+```
+
+**Complexité :** $`O(h)`$
