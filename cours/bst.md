@@ -6,6 +6,12 @@
   - si `y` est un nœud du sous-arbre gauche de `x` alors `y.cle <= x.cle`
   - si `y` est un nœud du sous-arbre droite de `x` alors `y.cle >= x.cle`
 
+```mermaid
+graph TD
+  x((x)) ---|"≤"| g[/ \]
+  x ---|"≤"| d[/ \]
+```
+
 ---
 
 **Exemple** L'ensemble de clés `{3, 5, 9, 9, 13, 15}` peut être stocké dans un ABR de plusieurs façons différentes. En voici deux :
