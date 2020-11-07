@@ -238,13 +238,13 @@ Analyse de la complexité :
 
 Si l'arbre est vide, $`T(0) = c`$
 
-Sinon, $`T(n) = T(k) + T(n - k + 1) + d`$, où $`k`$ est le nombre de nœuds dans le sous-arbre gauche.
+Sinon, $`T(n) = T(k) + T(n - k - 1) + d`$, où $`k`$ est le nombre de nœuds dans le sous-arbre gauche.
 
 ---
 
 **Exercice**
 
-Montrer par récurrence que $`T(n) = (c + d)n + c = \Theta(n)`$
+Montrer par récurrence que $`T(n) = (c + d)n + c`$
 
 ---
 
