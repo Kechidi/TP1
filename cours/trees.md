@@ -236,7 +236,7 @@ parcoursInfixe(Noeud x) {
 }
 ```
 
-Analyse de la complexité :
+**Analyse de la complexité**
 
 Si l'arbre est vide, $`T(0) = c`$
 
