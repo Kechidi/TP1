@@ -59,3 +59,33 @@ graph TD
 ```
 
 ---
+
+**Version récursive**
+
+```java
+Noeud rechercher(Noeud x, cle k) {
+  if (x == null || x.cle == k) {
+    return x;
+  }
+  if (k < x.cle) {
+    return rechercher(x.gauche, k);
+  } else {
+    return rechercher(x.droit, k);
+  }
+}
+```
+
+**Version itérative**
+
+```java
+Noeud rechercher(cle k) {
+  x = racine;
+  while (x != null && x.cle != k) {
+    x = k < x.cle ? x.gauche : x.droit;
+  }
+}
+```
+
+**Analyse de complexité**
+
+Au pire on effectue une descente de la racine à une feuille au dernier niveau de l'arbre. La complexité est donc $`O(h)`$. Si on veut exprimer cela en fonction de nombre de nœuds $`n`$, rappelons-nous que la hauteur est entre $`\log n`$ est $`n`$. Donc au pire des cas on est à $`O(n)`$.
