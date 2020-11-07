@@ -213,7 +213,39 @@ graph TD
 Chaque nœud a des pointeurs vers son père, son fils gauche et son fils droit.
 
 Soit `x` un nœud. On va noter :
-  - `x.cle` : la clé (la donnée) stocké dans `x`
+  - `x.cle` : la clé (la donnée) stockée dans `x`
   - `x.pere` : le père de `x` (`null` si `x` est la racine)
   - `x.gauche` : le fils gauche de `x` (`null` si `x` n'a pas de fils gauche)
   - `x.droit` : le fils droit de `x` (`null` si `x` n'a pas de fils droit)
+
+## Parcours d'un arbre binaire
+
+  - préfixe : racine, sous-arbre gauche, sous-arbre droit
+  - infixe : sous-arbre gauche, racine, sous-arbre droit
+  - postfixe : sous-arbre gauche, sous-arbre droit, racine
+
+```java
+parcoursInfixe(Noeud x) {
+  if (x != null) {
+    parcoursInfixe(x.gauche);
+    traiter(x.cle);
+    parcoursInfixe(x.droit);
+  }
+}
+```
+
+Analyse de la complexité :
+
+Si l'arbre est vide, $`T(0) = c`$
+
+Sinon, $`T(n) = T(k) + T(n - k + 1) + d`$, où $`k`$ est le nombre de nœuds dans le sous-arbre gauche.
+
+---
+
+**Exercice**
+
+Montrer par récurrence que $`T(n) = (c + d)n + c = \Theta(n)`$
+
+---
+
+Le temps de parcours d'un arbre binaire est donc $`\Theta(n)`$, le même que pour une structure linéaire (liste ou tableau).
