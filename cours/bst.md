@@ -153,11 +153,73 @@ ajouter(Noeud z) {
   if (y == null) { // arbre vide
     racine = z;
   } else {
-    if (z.cle < y.cle) y.gauche = z;
-    else y.droit = z;
+    if (z.cle < y.cle)
+      y.gauche = z;
+    else
+      y.droit = z;
   }
   z.gauche = z.droit = null;
 }
 ```
 
 **Complexité :** $`O(h)`$
+
+
+## Suppression
+
+Trois cas possibles : le nœud à supprimer a 0, 1 ou 2 fils.
+
+---
+
+**Exercice** Supprimer 25, 31, et 9 de l'arbre suivant :
+
+```mermaid
+graph TD
+  29((29)) --- 9((9)) & 31((31))
+  9 --- 5((5)) & 23((23))
+  31 --- 0[ ] & 39((39))
+  23 --- 19((19)) & 25((25))
+  19 --- 13((13)) & i2[ ]
+  13 --- i3[ ] & 14((14))
+  39 --- 35((35)) & 45((45))
+
+  classDef invisible fill:#0000, stroke:#0000;
+  class 0,i2,i3 invisible
+  linkStyle 4,9,10 stroke:#0000
+```
+
+---
+
+```java
+supprimer(Noeud z) {
+  if (z.gauche == null || z.droit == null)
+    y = z;
+  else
+    y = successeur(z);
+  // y est le nœud à détacher
+
+  if (y.gauche != null)
+    x = y.gauche;
+  else
+    x = y.droit;
+  // x est le fils unique de y ou null si y n'a pas de fils
+
+  if (x != null) x.pere = y.pere;
+
+  if (y.pere == null) { // suppression de la racine
+    racine = x;
+  } else {
+    if (y == y.pere.gauche)
+      y.pere.gauche = x;
+    else
+      y.pere.droite = x;
+  }
+
+  if (y != z) z.cle = y.cle;
+}
+```
+
+**Complexité :** $`O(h)`$
+
+
+**Conclusion :** Toutes les opérations s'effectuent en $`O(h)`$. Nous avons donc intérêt de maintenir l'arbre pas trop haut ($`h = \Theta(\log h)`$ et pas $`\Theta(n)`$).
