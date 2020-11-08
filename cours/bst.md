@@ -21,7 +21,7 @@ graph TD
   subgraph a[ ]
     9a((9)) --- 5a((5)) & 13a((13))
     5a --- 3a((3)) & 9aa((9))
-    13a --- i1[ ] & 15a((13))
+    13a --- i1[ ] & 15a((15))
   end
   subgraph b[ ]
     3b((3)) --- i2[ ] & 5b((5))
@@ -63,6 +63,8 @@ graph TD
 **Version récursive**
 
 ```java
+// renvoie le nœud du sous-arbre de racine x qui contient k
+// ou null si k n'est pas dans cet sous-arbre
 Noeud rechercher(Noeud x, cle k) {
   if (x == null || x.cle == k) {
     return x;
@@ -94,7 +96,9 @@ Au pire on effectue une descente de la racine à une feuille au dernier niveau d
 ## Minimum et maximum
 
 ```java
-Noeus minimum(Noeud x) {
+// renvoie le nœud qui contient la clé min dans le sous-arbre de racine x
+// on suppose que x n'est pas null
+Noeud minimum(Noeud x) {
   while (x.gauche != null) x = x.gauche;
   return x;
 }
@@ -120,6 +124,9 @@ graph TD
 ```
 
 ```java
+// renvoie le noœud qui contient la clé qui suit x.cle dans l'ordre des clés
+// ou null si x.cle est la plus grande clé
+// on suppose que x n'est pas null
 Noeud successeur(Noeud x) {
   if (x.droit != null) return minimum(x.droit);
   y = x.pere;
@@ -142,6 +149,7 @@ Noeud successeur(Noeud x) {
 ---
 
 ```java
+// ajoute z.cle dans l'arbre en préservant la propriété des ABR
 ajouter(Noeud z) {
   y = null;
   x = racine;
@@ -191,6 +199,7 @@ graph TD
 ---
 
 ```java
+// supprime z.cle de l'arbre en préservant la propriété des ABR
 supprimer(Noeud z) {
   if (z.gauche == null || z.droit == null)
     y = z;
@@ -216,6 +225,7 @@ supprimer(Noeud z) {
   }
 
   if (y != z) z.cle = y.cle;
+  recycler y;
 }
 ```
 
