@@ -41,7 +41,7 @@ graph TD
 
 ---
 
-**Définition** Un *arbre* est un ensemble fini et non vide de nœuds, tel que :
+**Définition** Un *arbre* est un ensemble fini et non vide de *nœuds*, tel que :
   - Il existe un nœud appelé *racine*.
   - Le reste des nœuds est partitionné en $`n \ge 0`$ sous-ensembles disjoints $`T_1,\dots,T_n`$ où chaque $`T_i`$ est un arbre. $`T_1,\dots,T_n`$ sont des *sous-arbres* de la racine.  
 
@@ -102,7 +102,7 @@ graph TD
 ### Avec pointeurs (représentation chaînée)
 
 Chaque nœud à les champs suivants :
-  - donnée
+  - donnée (clé)
   - pointeur vers le père
   - pointeur vers le premier fils
   - pointeur vers le frère précédent
