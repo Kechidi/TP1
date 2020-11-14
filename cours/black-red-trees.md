@@ -71,7 +71,7 @@ De l'autre coté, si on utilise un nœud différent pour chaque feuille, on gasp
 graph TD
   r(( ))
   r -.- f1(( )) & f2(( )) & f3(( ))
-  r & f1 & f2 & f3 --> sentinelle
+  r & f1 & f2 & f3 --> sentinelle[ ]
 
-  style sentinelle fill:#000, color:#fff;
+  style sentinelle fill:#000;
 ```
