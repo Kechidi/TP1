@@ -233,3 +233,12 @@ supprimer(Noeud z) {
 
 
 **Conclusion :** Toutes les opérations s'effectuent en $`O(h)`$. Nous avons donc intérêt de maintenir l'arbre pas trop haut ($`h = \Theta(\log h)`$ et pas $`\Theta(n)`$).
+
+
+## Comparaison avec des structures linéaires
+
+| Structure     | Recherche     | Ajout   | Suppression |
+| ------------- |:-------------:|:-------:|:-----------:|
+| tableau trié  | $`O(\log n)`$ |$`O(n)`$ |$`O(n)`$     |
+| liste chaînée | $`O(n)`$      |$`O(1)`$ |$`O(1)`$     |
+| ABR           | $`O(h)`$      |$`O(h)`$ |$`O(h)`$     |
