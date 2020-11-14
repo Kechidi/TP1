@@ -1,6 +1,6 @@
 # Arbres rouge-noire (ARN)
 
-Les arbres équilibrés sont des ABR pour lesquels $`h = \Theta(n)`$. Parmi les différents types d'arbres équilibrés on va s'intéresser aux ARN où chaque nœud possède une couleur.
+Les arbres équilibrés sont des ABR pour lesquels $`h = O(n)`$. Parmi les différents types d'arbres équilibrés on va s'intéresser aux ARN où chaque nœud possède une couleur.
 
 ## Définitions et propriétés
 
@@ -71,7 +71,7 @@ De l'autre coté, si on utilise un nœud différent pour chaque feuille, on gasp
 graph TD
   r(( ))
   r -.- f1(( )) & f2(( )) & f3(( ))
-  r & f1 & f2 & f3 --> sentinelle[ ]
+  r & f1 & f2 & f3 --> sentinelle
 
-  style sentinelle fill:#000;
+  style sentinelle fill:#000, stroke:#fff;
 ```
