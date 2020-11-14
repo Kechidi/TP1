@@ -73,5 +73,5 @@ graph TD
   r -.- f1(( )) & f2(( )) & f3(( ))
   r & f1 & f2 & f3 --> sentinelle
 
-  style sentinelle fill:#000, stroke:#fff;
+  style sentinelle fill:#000, color:#fff;
 ```
