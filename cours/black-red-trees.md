@@ -48,3 +48,30 @@ graph TD
   class 50,80,26,40,92,30,36,44,54,74,s01,s02,12,22,s03,s04,s05,s06,s07,s08,s09,s10,s11,s12,s13,s14,s15,s16,s17,s18,s19,s20,s21 black;
   class 32,58,18,28,38,68,76,4 red;
 ```
+
+## Notes sur l'implémentation
+
+En plus d'attributs `cle`, `pere`, `gauche` et `droit` des nœuds d'un ABR, on ajoute un attribut supplémentaire `couleur` (1 bit) qui peut prendre les valeurs `N` ou `R`.
+
+Le fait de remplacer `null` par des nœuds ☒ noirs nous permet de simplifier nos algorithmes en écrivant par exemple
+
+```java
+if (x.couleur == N) { ... }
+```
+
+au lieu de
+
+```java
+if (x == null || x.couleur == N) { ... }
+```
+
+De l'autre coté, si on utilise un nœud différent pour chaque feuille, on gaspille de la mémoire. C'est pourquoi on peut remplacer tous les ☒ par un nœud unique, la *sentinelle*.
+
+```mermaid
+graph TD
+  r(( ))
+  r -.- f1(( )) & f2(( )) & f3(( ))
+  r & f1 & f2 & f3 --> sentinelle
+
+  style sentinelle fill:#000, stroke:#fff;
+```
