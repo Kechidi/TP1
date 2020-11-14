@@ -15,7 +15,7 @@ Pour simplifier les définitions et les algorithmes qui suivent, on va considér
 
 À partir de (4) et (5) on voit déjà que l'arbre est « équilibré » dans le sens où pour chaque sous-arbre, la branche la plus longue est au plus deux fois plus longue que la branche la plus courte.
 
-**Définition** La hauteur noire d'un nœud $`x`$ (on note $`hn(x)`) est le nombre de nœuds noirs (sans compter $`x`$) sur le chemin de $`x`$ vers une feuille. La hauteur noire d'un arbre est la hauteur noire de sa racine.
+**Définition** La hauteur noire d'un nœud $`x`$ (on note $`hn(x)`$) est le nombre de nœuds noirs (sans compter $`x`$) sur le chemin de $`x`$ vers une feuille. La hauteur noire d'un arbre est la hauteur noire de sa racine.
 
 **Exemple**
 
