@@ -114,5 +114,4 @@ flowchart TD
   y2((y)) --- x2((x)) & c2[/c\]
   x2 --- a[/a\] & b[/b\]
   end
-  s1 ---> s2
 ```
