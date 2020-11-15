@@ -118,3 +118,12 @@ graph TD
 
   * `rotationGauche(x)` : `T1 -> T2`
   * `rotationDroite(y)` : `T2 -> T1`
+
+---
+
+**Proposition** Les rotations préservent la propriété des ABR.
+
+---
+
+**Complexité :** $`O(1)`$
+ 
