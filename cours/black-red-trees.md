@@ -115,8 +115,6 @@ flowchart TD
   x2 --- a[/a\] & b[/b\]
   end
 
-  s1 --->|"rotationGauche(x)"| s2
-  s2 --->|"rotationDroite(y)"| s1
+  s1 ---> s2
+  s2 ---> s1
   ```
-
-   
