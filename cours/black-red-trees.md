@@ -104,7 +104,7 @@ graph TD
 Pour ajouter ou supprimer des clés, on va se baser sur les opérations `ajouter()` et supprimer des ABR. Celles-ci ne préservent pas forcement les propriétés (1)-(5). Si certaines de ces propriétés sont violées, on va les réparer en faisant des recoloriages et des *rotations*.
 
 ```mermaid
-flowchart TD
+graph TD
   subgraph s1[ ]
   x1((x)) --- a1[/a\] & y1((y))
   y1 --- b1[/b\] & c1[/c\]
