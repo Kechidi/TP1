@@ -105,15 +105,16 @@ Pour ajouter ou supprimer des clés, on va se baser sur les opérations `ajouter
 
 ```mermaid
 graph TD
-  subgraph s1[ ]
+  subgraph T1
   x1((x)) --- a1[/a\] & y1((y))
   y1 --- b1[/b\] & c1[/c\]
   end
 
-  subgraph s2[ ]
+  subgraph T2
   y2((y)) --- x2((x)) & c2[/c\]
   x2 --- a[/a\] & b[/b\]
   end
-
-  s1 --> s2
 ```
+
+  * `rotationGauche(x)` : `T1 -> T2`
+  * `rotationDroite(y)` : `T2 -> T1`
