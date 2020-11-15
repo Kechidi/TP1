@@ -126,4 +126,13 @@ graph TD
 ---
 
 **Complexité :** $`O(1)`$
+
+
+## Ajout
+
+TODO
+
+## Suppression
+
+TODO
  
