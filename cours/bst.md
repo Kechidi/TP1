@@ -134,6 +134,7 @@ Noeud successeur(Noeud x) {
     x = y;
     y = y.pere;
   }
+  return y;
 }
 ```
 
