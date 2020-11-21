@@ -130,9 +130,94 @@ graph TD
 
 ## Ajout
 
-TODO
+On commence par l'ajout classique dans un ABR légèrement modifié :
+
+```java
+ajouter(Noeud z) {
+  y = ☒;
+  x = racine;
+  while (x != ☒) {
+    y = x;
+    x = z.cle < x.cle ? x.gauche : x.droit;
+  }
+  z.pere = y;
+  if (y == ☒) { // arbre vide
+    racine = z;
+  } else {
+    if (z.cle < y.cle)
+      y.gauche = z;
+    else
+      y.droit = z;
+  }
+  z.gauche = z.droit = ☒;
+  z.couleur = R;
+  ajouterCorrection(z);
+}
+```
+
+Les modifications sont :
+  * on remplace les `null` par `☒`
+  * on colorie le nouveau nœud `z` en rouge
+  * comme ce coloriage risque de violer certaines propriétés RN, on appelle une procédure qui les restaure.
+
+Avant de donner le pseudo-code de `ajouterCorrection()` voyons quelles propriétés RN risquent d'être violées :
+  1. OK
+  2. Si l'arbre était vide `z` devient sa racine. C'est facile à réparer, il suffit de le colorier en noir
+  3. OK
+  4. Si le père de `z`, `y` est rouge, cette propriété est violée.
+  5. OK
+
+Voici comment on répare :
+
+```java
+ajouterCorrection(Noeud z) {
+  while (z.pere.couleur == R) {
+    if (z.pere == z.pere.pere.gauche) {
+      // La seule propriété RN violée est (4) : z et z.pere  sont rouges
+      y = z.pere.pere.droit; // l'oncle de z
+      if (y.couleur == R) {
+        // cas 1
+        z.pere.couleur = N;
+        y.couleur = N;
+        z.pere.pere.couleur = R;
+        z = z.pere.pere;
+      } else {
+        if (z == z.pere.droit) {
+          // cas 2
+          z = z.pere;
+          rotationGauche(z);
+        }
+        // cas 3
+        z.pere.couleur = N;
+        z.pere.pere.couleur = R;
+        rotationDroite(z.pere.pere);
+      }
+    } else {
+      // idem en miroir, gauche <-> droite
+      // cas 1', 2', 3'
+    }
+  }
+  // La seule propriété (potentiellement) violée est (2)
+  racine.couleur = N;
+}
+```
+
+---
+
+**Proposition**
+  * Au début de chaque itération de la boucle `while` la seule propriété RN violée est (4) : `z` et `z.pere` sont tous les deux rouges.
+  * À la fin de la boucle, la seule propriété potentiellement violée est (4) et la dernière instruction la répare.
+
+---
+
+Pour démontrer cette proposition, on va regarder ce qui se passe dans les cas 1, 2 et 3. Les cas 1', 2' et 3' sont symétriques.
+
+**Cas 1** `y` (l'oncle de `z`) est rouge.
+
+On analysera le sous-cas où `z` est fils gauche, l'autre cas est symétrique.
+
+
 
 ## Suppression
 
 TODO
- 
