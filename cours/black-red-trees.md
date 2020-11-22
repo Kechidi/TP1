@@ -219,11 +219,7 @@ On analysera le sous-cas où `z` est fils gauche, l'autre cas est symétrique.
 ```mermaid
 flowchart TD
   subgraph 0[Avant]
-    R1[" "] --- C1
-    C1((C)) --- A1((A)) & D1((D))
-    A1 --- B1(("B")) & c1[/c\]
-    B1 --- a1[/a\] & b1[/b\]
-    D1 --- d1[/d\] & e1[/e\]
+    R1[" "] --- C1((C)) --- A1((A)) & D1((D))
   end
 ```
 
