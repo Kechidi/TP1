@@ -224,26 +224,6 @@ flowchart TD
     B1 --- a1[/a\] & b1[/b\]
     D1 --- d1[/d\] & e1[/e\]
   end
-  y1[y] -.-> D1
-  z1[z] -.-> B1
-
-  subgraph 1[Après]
-    R2[" "] --- C2((C)) --- A2((A)) & D2((D))
-    A2 --- B2((B)) & c2[/c\]
-    D2 --- d2[/d\] & e2[/e\]
-    B2 --- a2[/a\] & b2[/b\]
-  end
-
-  z2[z] -.-> C2
-
-  classDef black fill:#000, stroke:#fff
-  classDef red fill:#f00, stroke:#fff
-  classDef invisible fill:#0000, stroke:#0000
-  classDef pointer stroke-dasharray: 5 5, fill:#0000
-  class C1,B1,A2,D2 black
-  class A1,D1,C2,B2 red
-  class R1,R2 invisible
-  class z1,y1,z2 pointer
 ```
 
 ## Suppression
