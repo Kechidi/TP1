@@ -220,7 +220,7 @@ On analysera le sous-cas où `z` est fils gauche, l'autre cas est symétrique.
 flowchart TD
   subgraph 0[Avant]
     R1[" "] --- C1((C)) --- A1((A)) & D1((D))
-    A1 --- B1(("B")) & c1[/c\]
+    A1 --- B1(("B")) & sc1[/c\]
   end
 ```
 
