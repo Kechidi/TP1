@@ -331,9 +331,93 @@ graph TD
   Cas3 --> stop
 ```
 
-**Complexité** Dans le cas 1 on remonte à deux niveaux dans l'arbre, dans les deux autres cas on s'arrête directement. Au pire des cas on fait $`O(h) = O(\log n)`$ itérations.
+**Complexité** Dans le cas 1 on remonte à deux niveaux dans l'arbre, dans les deux autres cas on s'arrête directement. Au pire on fait $`O(h) = O(\log n)`$ itérations.
 
 
 ## Suppression
 
-TODO
+Tout comme pour l'ajout, on commence par une suppression ABR classique légèrement modifiée :
+
+```java
+supprimer(Noeud z) {
+  if (z.gauche == ☒ || z.droit == ☒)
+    y = z;
+  else
+    y = successeur(z);
+  // y est le nœud à détacher
+
+  if (y.gauche != null)
+    x = y.gauche;
+  else
+    x = y.droit;
+  // x est le fils unique de y ou null si y n'a pas de fils
+
+  x.pere = y.pere; // inconditionnelle
+
+  if (y.pere == ☒) { // suppression de la racine
+    racine = x;
+  } else {
+    if (y == y.pere.gauche)
+      y.pere.gauche = x;
+    else
+      y.pere.droite = x;
+  }
+
+  if (y != z) z.cle = y.cle;
+  if (y.couleur == N) supprimerCorrection(x);
+  recycler y;
+}
+```
+
+Les modifications sont :
+  * On remplace les `null` par `☒`
+  * L'instruction `x.pere = y.pere` n'est plus dans un `if (x != ☒)`. `x` peut être la sentinelle avec son pointeur `pere` modifié. C'est le seul cas où on utilise autre chose que la `couleur` de la sentinelle et cela pour uniformiser les traitements dans ce cas particulier.
+  * Si le nœud détaché est noir, on appelle une procédure qui restaure les propriétés RN. Notons que si `y` est rouge, (1) - (5) sont préservés (à vérifier).
+
+Quelles propriétés on a pu « casser » en supprimant un nœud noir ?
+  1. OK
+  2. Si `y` était la racine et `x` est rouge
+  3. OK
+  4. Si `x` et `y.pere` sont rouges
+  5. Cette propriété est enfreinte pour tous les ancêtres de `y` : tous les chemins qui passait par `y` se retrouvent avec un nœud noir de moins !
+
+(2) et (4) sont faciles à réparer : il suffit de colorier `x` en noir. Le plus difficile est (5).
+
+```java
+supprimerCorrection(Noeud x) {
+  while (x != racine && x.couleur == N) {
+    if (x == x.pere.gauche) {
+      w = x.pere.droit; // le frère de x
+      if (w.couleur == R) {
+        // cas 1
+        w.couleur = N;
+        x.pere.couleur = R;
+        rotationGauche(x.pere);
+        w = x.pere.droit;
+      }
+      if (w.gauche.couleur == N && w.gauche.couleur == N) {
+        // cas 2
+        w.couleur = R;
+        x = x.pere;
+      } else {
+        if (w.droit.couleur == N) {
+          // cas 3
+          w.gauche.couleur = N;
+          w.couleur = R;
+          rotationDroite(w);
+          x = x.pere.droit;
+        }
+        // cas 4
+        w.couleur = x.pere.couleur;
+        x.pere.couleur = N;
+        w.droit.couleur = N;
+        rotationGauche(x.pere);
+        x = racine;
+      }
+    } else {
+      // idem en miroir, gauche <-> droite
+      // cas 1', 2', 3', 4'
+    }
+  }
+}
+```
