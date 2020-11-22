@@ -164,7 +164,7 @@ Avant de donner le pseudo-code de `ajouterCorrection()` voyons quelles propriét
   1. OK
   2. Si l'arbre était vide `z` devient sa racine. C'est facile à réparer, il suffit de le colorier en noir
   3. OK
-  4. Si le père de `z`, `y` est rouge, cette propriété est violée.
+  4. Si `y` (le père de `z`) est rouge, cette propriété est violée.
   5. OK
 
 Voici comment on répare :
@@ -172,8 +172,8 @@ Voici comment on répare :
 ```java
 ajouterCorrection(Noeud z) {
   while (z.pere.couleur == R) {
+    // (*) La seule propriété RN violée est (4) : z et z.pere sont rouges
     if (z.pere == z.pere.pere.gauche) {
-      // (*) La seule propriété RN violée est (4) : z et z.pere sont rouges
       y = z.pere.pere.droit; // l'oncle de z
       if (y.couleur == R) {
         // cas 1
@@ -214,7 +214,7 @@ Pour démontrer cette proposition, on va regarder ce qui se passe dans les cas 1
 
 **Cas 1** `y` (l'oncle de `z`) est rouge.
 
-On analysera le sous-cas où `z` est fils gauche, l'autre cas est symétrique.
+Dans le schéma ci-dessous `z` est fils gauche. Le cas où `z` est fils droit est identique.
 
 ```mermaid
 graph TD
@@ -246,9 +246,44 @@ graph TD
   class z1,y1,z2 pointer
 ```
 
-   * Cette transformation ne viole pas (5) (à vérifier)
+   * Cette transformation préserve (1), (3) et (5) (à vérifier)
    * Si le père de C est rouge, on entame une nouvelle itération avec (*)
    * Si le père de C est noir, on sort de la boucle avec (**)
+
+**Cas 2** `y` (l'oncle de `z`) est noir et z est fils droit.
+
+```mermaid
+graph TD
+  subgraph 0[Avant]
+    R1[" "] --- C1((C)) --- A1((A)) & D1((D))
+    A1 --- a1[/a\] & B1(("B"))
+    B1 --- b1[/b\] & c1[/c\]
+    D1 --- d1[/d\] & e1[/e\]
+  end
+  y1[y] -.-> D1
+  z1[z] -.-> B1
+
+  subgraph 1[Après]
+    R2[" "] --- C2((C)) --- B2((B)) & D2((D))
+    B2 --- A2((A)) & c2[/c\]
+    A2 --- a2[/a\] & b2[/b\]
+    D2 --- d2[/d\] & e2[/e\]
+  end
+
+  y2[y] -.-> D2
+  z2[z] -.-> A2
+
+  classDef black fill:#000, stroke:#fff
+  classDef red fill:#f00, stroke:#fff
+  classDef invisible fill:#0000, stroke:#0000
+  classDef pointer stroke-dasharray: 5 5, fill:#0000
+  class C1,D1,C2,D2 black
+  class A1,A2,B1,B2 red
+  class R1,R2 invisible
+  class z1,y1,z2 pointer
+```
+
+
 
 ## Suppression
 
