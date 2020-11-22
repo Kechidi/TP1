@@ -325,10 +325,10 @@ graph TD
 
 ```mermaid
 graph TD
-  start(("*")) ---> Cas1[Cas 1] & Cas2[Cas 2] & Cas3[Cas 3]
-  Cas1 ---> start & stop(("**"))
-  Cas2 ---> Cas3
-  Cas3 ---> stop
+  start(("*")) --> Cas1[Cas 1] & Cas2[Cas 2] & Cas3[Cas 3]
+  Cas1 --> start & stop(("**"))
+  Cas2 --> Cas3
+  Cas3 --> stop
 ```
 
 **Complexité** Dans le cas 1 on remonte à deux niveaux dans l'arbre, dans les deux autres cas on s'arrête directement. Au pire des cas on fait $`O(h) = O(\log n)`$ itérations.
