@@ -319,6 +319,21 @@ graph TD
   class z1,y1,z2,y2 pointer
 ```
 
+(1) - (5) sont restaurés (à vérifier) et on sort de la boucle.
+
+À noter que les cas 1, 2, et 3 ne sont pas mutuellement exclusifs. Voici les différentes possibilités de déroulement d'une itération de la boucle :
+
+```mermaid
+graph TD
+  start(("*")) ---> Cas1[Cas 1] & Cas2[Cas 2] & Cas3[Cas 3]
+  Cas1 ---> start & stop(("**"))
+  Cas2 ---> Cas3
+  Cas3 ---> stop
+```
+
+**Complexité** Dans le cas 1 on remonte à deux niveaux dans l'arbre, dans les deux autres cas on s'arrête directement. Au pire des cas on fait $`O(h) = O(\log n)`$ itérations.
+
+
 ## Suppression
 
 TODO
