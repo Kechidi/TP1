@@ -246,11 +246,11 @@ graph TD
   class z1,y1,z2 pointer
 ```
 
-   * Cette transformation préserve (1), (3) et (5) (à vérifier)
+   * Cette transformation préserve (1), (2), (3) et (5) (à vérifier)
    * Si le père de C est rouge, on entame une nouvelle itération avec (*)
    * Si le père de C est noir, on sort de la boucle avec (**)
 
-**Cas 2** `y` (l'oncle de `z`) est noir et z est fils droit.
+**Cas 2** `y` (l'oncle de `z`) est noir et `z` est fils droit.
 
 ```mermaid
 graph TD
@@ -280,10 +280,44 @@ graph TD
   class C1,D1,C2,D2 black
   class A1,A2,B1,B2 red
   class R1,R2 invisible
-  class z1,y1,z2 pointer
+  class z1,y1,z2,y2 pointer
 ```
 
+  * Cette transformation préserve (1), (2), (3) et (5) (à vérifier)
+  * `z` devient fils gauche et on obtient le cas 3
 
+**Cas 3** `y` (l'oncle de `z`) est noir et `z` est fils gauche.
+
+```mermaid
+graph TD
+  subgraph 0[Avant]
+    R1[" "] --- C1((C)) --- B1((B)) & D1((D))
+    B1 --- A1((A)) & c1[/c\]
+    A1 --- a1[/a\] & b1[/b\]
+    D1 --- d1[/d\] & e1[/e\]
+  end
+
+  y1[y] -.-> D1
+  z1[z] -.-> A1
+
+  subgraph 1[Après]
+    R2[" "] --- B2((B)) --- A2((A)) & C2((C))
+    A2 --- a2[/a\] & b2[/b\]
+    C2 --- c2[/c\] & D2((D))
+    D2 --- d2[/d\] & e2[/e\]
+  end
+
+  z2[z] -.-> A2
+
+  classDef black fill:#000, stroke:#fff
+  classDef red fill:#f00, stroke:#fff
+  classDef invisible fill:#0000, stroke:#0000
+  classDef pointer stroke-dasharray: 5 5, fill:#0000
+  class C1,D1,B2,D2 black
+  class A1,B1,A2,C2 red
+  class R1,R2 invisible
+  class z1,y1,z2,y2 pointer
+```
 
 ## Suppression
 
