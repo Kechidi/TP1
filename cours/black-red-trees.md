@@ -173,7 +173,7 @@ Voici comment on répare :
 ajouterCorrection(Noeud z) {
   while (z.pere.couleur == R) {
     if (z.pere == z.pere.pere.gauche) {
-      // La seule propriété RN violée est (4) : z et z.pere  sont rouges
+      // La seule propriété RN violée est (4) : z et z.pere sont rouges
       y = z.pere.pere.droit; // l'oncle de z
       if (y.couleur == R) {
         // cas 1
@@ -206,7 +206,7 @@ ajouterCorrection(Noeud z) {
 
 **Proposition**
   * Au début de chaque itération de la boucle `while` la seule propriété RN violée est (4) : `z` et `z.pere` sont tous les deux rouges.
-  * À la fin de la boucle, la seule propriété potentiellement violée est (4) et la dernière instruction la répare.
+  * À la fin de la boucle, la seule propriété potentiellement violée est (2) et la dernière instruction la répare.
 
 ---
 
@@ -216,7 +216,35 @@ Pour démontrer cette proposition, on va regarder ce qui se passe dans les cas 1
 
 On analysera le sous-cas où `z` est fils gauche, l'autre cas est symétrique.
 
+```mermaid
+flowchart TD
+  subgraph 0[Avant]
+    R1[" "] --- C1((C)) --- A1((A)) & D1((D))
+    A1 --- B1(("B")) & c1[/c\]
+    B1 --- a1[/a\] & b1[/b\]
+    D1 --- d1[/d\] & e1[/e\]
+  end
+  y1[y] -.-> D1
+  z1[z] -.-> B1
 
+  subgraph 1[Après]
+    R2[" "] --- C2((C)) --- A2((A)) & D2((D))
+    A2 --- B2((B)) & c2[/c\]
+    D2 --- d2[/d\] & e2[/e\]
+    B2 --- a2[/a\] & b2[/b\]
+  end
+
+  z2[z] -.-> C2
+
+  classDef black fill:#000, stroke:#fff
+  classDef red fill:#f00, stroke:#fff
+  classDef invisible fill:#0000, stroke:#0000
+  classDef pointer stroke-dasharray: 5 5, fill:#0000
+  class C1,B1,A2,D2 black
+  class A1,D1,C2,B2 red
+  class R1,R2 invisible
+  class z1,y1,z2 pointer
+```
 
 ## Suppression
 
