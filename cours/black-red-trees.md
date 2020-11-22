@@ -173,7 +173,7 @@ Voici comment on répare :
 ajouterCorrection(Noeud z) {
   while (z.pere.couleur == R) {
     if (z.pere == z.pere.pere.gauche) {
-      // La seule propriété RN violée est (4) : z et z.pere sont rouges
+      // (*) La seule propriété RN violée est (4) : z et z.pere sont rouges
       y = z.pere.pere.droit; // l'oncle de z
       if (y.couleur == R) {
         // cas 1
@@ -197,7 +197,7 @@ ajouterCorrection(Noeud z) {
       // cas 1', 2', 3'
     }
   }
-  // La seule propriété (potentiellement) violée est (2)
+  // (**) La seule propriété (potentiellement) violée est (2)
   racine.couleur = N;
 }
 ```
@@ -205,8 +205,8 @@ ajouterCorrection(Noeud z) {
 ---
 
 **Proposition**
-  * Au début de chaque itération de la boucle `while` la seule propriété RN violée est (4) : `z` et `z.pere` sont tous les deux rouges.
-  * À la fin de la boucle, la seule propriété potentiellement violée est (2) et la dernière instruction la répare.
+   * (*) Au début de chaque itération de la boucle `while` la seule propriété RN violée est (4) : `z` et `z.pere` sont tous les deux rouges.
+   * (**) À la fin de la boucle, la seule propriété potentiellement violée est (2) et la dernière instruction la répare.
 
 ---
 
@@ -245,6 +245,10 @@ graph TD
   class R1,R2 invisible
   class z1,y1,z2 pointer
 ```
+
+   * Cette transformation ne viole pas (5) (à vérifier)
+   * Si le père de C est rouge, on entame une nouvelle itération avec (*)
+   * Si le père de C est noir, on sort de la boucle avec (**)
 
 ## Suppression
 
