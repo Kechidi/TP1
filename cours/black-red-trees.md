@@ -471,8 +471,8 @@ graph TD
     E2 --- e2[/e\] & f2[/f\]
   end
 
-  x2 --> A2
-  w2 --> C2
+  x2 -.-> A2
+  w2 -.-> C2
 
   classDef black fill:#888, stroke:#fff
   classDef red fill:#f00, stroke:#fff
