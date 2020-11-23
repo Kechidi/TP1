@@ -419,5 +419,27 @@ supprimerCorrection(Noeud x) {
       // cas 1', 2', 3', 4'
     }
   }
+  x.couleur = N;
+
 }
 ```
+
+C'est difficile de raisonner dans les termes de hauteurs noires et de démontrer que la procédure restaure (5). C'est pourquoi on va « pousser » la noirceur de `y` vers son fils `x`. Ainsi `x` devient double noir ou rouge-noir, (5) est préservé et on cherche à restaurer (1). Avec cette interprétation la boucle `while` remonte ce noir en trop jusqu'à ce que :
+    * `x` est un nœud rouge-noir. Dans ce cas on colorie `x` en noir (simple) et (1)-(5) sont restaurés.
+    * `x` pointe vers la racine. Dans ce cas le noir en trop ne pose pas de problème au niveau de (5) et on peut s'en débarrasser.
+    * On peut procéder à des rotations et colorations appropriées.
+
+---
+
+**Proposition**
+
+  * (*) Au début de chaque itération de la boucle `while` :
+    * la seule propriété violée est (1) : `x` est un nœud double noir
+    * `x` n'est pas la racine
+    * son frère `w` n'est pas la sentinelle
+  * (**) À la fin de la boucle les seules propriétés potentiellement violées sont :
+    * (2) si `x` est la racine et rouge
+    * (4) si `x` et sont père sont rouges
+  Dans les deux cas la dernière instruction répare (1)-(5)
+
+---
