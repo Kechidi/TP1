@@ -1,7 +1,9 @@
+Voici un diagramme de classes simple avec seulement trois classes
+
 ```mermaid
-flowchart TD
-  subgraph 0[Avant]
-    R1[" "] --- C1((C)) --- A1((A)) & D1((D))
-    A1 --- B1(("B")) & truc[machin]
-  end
+classDiagram
+  Bulletin <|-- Vote
+  Electeur "1" *-- "1..*" Bulletin
 ```
+
+Et *c'est* **tout** !
