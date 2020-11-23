@@ -532,5 +532,53 @@ graph TD
   class x1,w1,x2,w2 pointer
 ```
 
+  * Soit on entame une nouvelle itération avec (*) (à vérifier)
+  * Soit on sort de la boucle avec (**)
+
+
+**Cas 3** `w` est noir, `w.gauche` est rouge, `w.droit` est noir
+
+```medmaid
+graph TD
+  subgraph 0[Avant]
+    R1[" "] --- B1((B)) --- A1((A)) & D1((D))
+    A1 --- a1[/a\] & b1[/b\]
+    D1 --- C1((C)) & E1((E))
+    C1 --- c1[/c\] & d1[/d\]
+    E1 --- e1[/e\] & f1[/f\]
+  end
+
+  x1[x] -.-> A1
+  w1[w] -.-> D1
+
+  subgraph 1[Après]
+    R2[" "] --- B2((B)) --- A2((A)) & C2((C))
+    A2 --- a2[/a\] & b2[/b\]
+    C2 --- c2[/c\] & D2((D))
+    D2 --- d2[/d\] & E2((E))
+    E2 --- e2[/e\] & f2[/f\]
+  end
+
+  x2[x] -.-> A2
+  w2[w] -.-> C2
+
+  classDef black fill:#888, stroke:#fff
+  classDef red fill:#f00, stroke:#fff
+  classDef invisible fill:#0000, stroke:#0000
+  classDef pointer stroke-dasharray: 5 5, fill:#0000
+  classDef black2 fill:#000, stroke:#fff
+  classDef green fill:#cde498
+
+  class A1,A2 black2
+  class D1,E1,C2,E2 black
+  class C1,D2 red
+  class B1,B2 green
+
+  class R1,R2 invisible
+  class x1,w1,x2,w2 pointer
+```
+
   * (2) - (5) sont préservées (à vérifier)
-  * On entame une nouvelle itération ou la boucle s'arrête
+  * `w` ce retrouve avec un fils droit rouge et cela nous amène dans cas 4
+
+  
