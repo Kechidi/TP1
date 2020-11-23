@@ -460,8 +460,8 @@ graph TD
     C1 --- c1[/c\] & d1[/d\]
     E1 --- e1[/e\] & f1[/f\]
   end
-  x1 --> A1
-  w1 --> D1
+  x1[x] -.-> A1
+  w1[w] -.-> D1
 
   subgraph 1[Après]
     R2 --- D2((D)) --- B2((B)) & E2((E))
@@ -471,8 +471,8 @@ graph TD
     E2 --- e2[/e\] & f2[/f\]
   end
 
-  x2 -.-> A2
-  w2 -.-> C2
+  x2[x] -.-> A2
+  w2[w] -.-> C2
 
   classDef black fill:#888, stroke:#fff
   classDef red fill:#f00, stroke:#fff
@@ -489,3 +489,48 @@ graph TD
 
   * (2) - (5) sont préservées (à vérifier)
   * `w` devient noir et cela nous ramène dans un des autres cas.
+
+
+**Cas 2** `w` est noir et ses deux fils sont noirs
+
+```mermaid
+graph TD
+  subgraph 0[Avant]
+    R1[" "] --- B1((B)) --- A1((A)) & D1((D))
+    A1 --- a1[/a\] & b1[/b\]
+    D1 --- C1((C)) & E1((E))
+    C1 --- c1[/c\] & d1[/d\]
+    E1 --- e1[/e\] & f1[/f\]
+  end
+
+  x1[x] -.-> A1
+  w1[w] -.-> D1
+
+  subgraph 1[Après]
+    R2[" "] --- B2((B)) --- A2((A)) & D2((D))
+    A2 --- a2[/a\] & b2[/b\]
+    D2 --- C2((C)) & E2((E))
+    C2 --- c2[/c\] & d2[/d\]
+    E2 --- e2[/e\] & f2[/f\]
+  end
+
+  x2[x] -.-> B2
+
+  classDef black fill:#888, stroke:#fff
+  classDef red fill:#f00, stroke:#fff
+  classDef invisible fill:#0000, stroke:#0000
+  classDef pointer stroke-dasharray: 5 5, fill:#0000
+  classDef black2 fill:#000, stroke:#fff
+  classDef green fill:#cde498
+
+  class A1 black2
+  class C1,D1,E1,A2,C2,E2 black
+  class D2 red
+  class B1,B2 green
+
+  class R1,R2 invisible
+  class x1,w1,x2,w2 pointer
+```
+
+  * (2) - (5) sont préservées (à vérifier)
+  * On entame une nouvelle itération ou la boucle s'arrête
