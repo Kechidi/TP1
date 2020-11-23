@@ -538,7 +538,7 @@ graph TD
 
 **Cas 3** `w` est noir, `w.gauche` est rouge, `w.droit` est noir
 
-```medmaid
+```mermaid
 graph TD
   subgraph 0[Avant]
     R1[" "] --- B1((B)) --- A1((A)) & D1((D))
@@ -580,5 +580,3 @@ graph TD
 
   * (2) - (5) sont préservées (à vérifier)
   * `w` ce retrouve avec un fils droit rouge et cela nous amène dans cas 4
-
-  
