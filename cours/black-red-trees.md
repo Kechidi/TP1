@@ -438,8 +438,10 @@ C'est difficile de raisonner dans les termes de hauteurs noires et de démontrer
     * `x` n'est pas la racine
     * son frère `w` n'est pas la sentinelle
   * (**) À la fin de la boucle les seules propriétés potentiellement violées sont :
-    * (2) si `x` est la racine et rouge
-    * (4) si `x` et sont père sont rouges
-  Dans les deux cas la dernière instruction répare (1)-(5)
+
+      * (2) si `x` est la racine et rouge
+      * (4) si `x` et sont père sont rouges
+
+      Dans les deux cas la dernière instruction répare (1)-(5)
 
 ---
