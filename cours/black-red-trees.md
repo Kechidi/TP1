@@ -580,3 +580,48 @@ graph TD
 
   * (2) - (5) sont préservées (à vérifier)
   * `w` ce retrouve avec un fils droit rouge et cela nous amène dans cas 4
+
+
+**Cas 4** `w` est noir et `w.droit` est rouge
+
+```mermaid
+graph TD
+  subgraph 0[Avant]
+    R1[" "] --- B1((B)) --- A1((A)) & D1((D))
+    A1 --- a1[/a\] & b1[/b\]
+    D1 --- C1((C)) & E1((E))
+    C1 --- c1[/c\] & d1[/d\]
+    E1 --- e1[/e\] & f1[/f\]
+  end
+
+  x1[x] -.-> A1
+  w1[w] -.-> D1
+
+  subgraph 1[Après]
+    R2[" "] --- D2((D)) --- B2((B)) & E2((E))
+    B2((B)) --- A2((A)) & C2((C))
+    A2 --- a2[/a\] & b2[/b\]
+    C2 --- c2[/c\] & d2[/d\]
+    E2 --- e2[/e\] & f2[/f\]
+  end
+
+
+  classDef black fill:#888, stroke:#fff
+  classDef red fill:#f00, stroke:#fff
+  classDef invisible fill:#0000, stroke:#0000
+  classDef pointer stroke-dasharray: 5 5, fill:#0000
+  classDef black2 fill:#000, stroke:#fff
+  classDef green fill:#cde498
+  classDef yellow fill:#fff5ad
+
+  class A1 black2
+  class D1,A2,B2,E2 black
+  class E1 red
+  class B1,D2 green
+  class C1,C2 yellow
+
+  class R1,R2 invisible
+  class x1,w1,x2,w2 pointer
+```
+
+  * (1) - (5) sont restaurés et on sort de la boucle.
