@@ -289,3 +289,21 @@ graph TD
 ```
 
   * (1) - (5) sont restaurées et on sort de la boucle.
+
+  **Complexité** Dans le cas 1 on remonte à deux niveaux dans l'arbre, dans les deux autres cas on s'arrête directement. Au pire on fait $`O(h) = O(\log n)`$ itérations.
+
+  Voici comment se déroule la boucle :
+
+  ```mermaid
+  graph TD
+    start((*)) --> 1[Cas 1] & 2[Cas 2] & 3[Cas 3] & 4[Cas 4]
+    1 --> 2 & 3 & 4
+    2 --> start & stop(("**"))
+    3 --> 4
+    4 --> stop
+  ```
+
+  **Complexité** Dans cas 2 `x` remonte un niveau dans l'arbre, dans les autres cas la boucle s'arrête. Donc au pire $`O(h) = O(\log n)`$.
+
+
+  **Conclusion** Il est possible de maintenir l'arbre équilibré sans augmenter la complexité des opérations `ajouter()` et `supprimer()`. Ainsi toutes les opérations s'exécutent en temps logarithmique.
