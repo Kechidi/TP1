@@ -437,6 +437,7 @@ C'est difficile de raisonner dans les termes de hauteurs noires et de démontrer
     * la seule propriété violée est (1) : `x` est un nœud double noir
     * `x` n'est pas la racine
     * son frère `w` n'est pas la sentinelle
+
   * (**) À la fin de la boucle les seules propriétés potentiellement violées sont :
 
       * (2) si `x` est la racine et rouge
@@ -445,3 +446,46 @@ C'est difficile de raisonner dans les termes de hauteurs noires et de démontrer
       Dans les deux cas la dernière instruction répare (1)-(5)
 
 ---
+
+Pour démontrer cette proposition on va procéder cas par cas.
+
+**Cas 1** `w` (le frère de `z`) est rouge
+
+```mermaid
+graph TD
+  subgraph 0[Avant]
+    R1[" "] --- B1((B)) --- A1((A)) & D1((D))
+    A1 --- a1[/a\] & b1[/b\]
+    D1 --- C1((C)) & E1((E))
+    C1 --- c1[/c\] & d1[/d\]
+    E1 --- e1[/e\] & f1[/f\]
+  end
+  x1 --> A1
+  w1 --> D1
+
+  subgraph 1[Après]
+    R2 --- D2((D)) --- B2((B)) & E2((E))
+    B2 --- A2((A)) & C2((C))
+    A2 --- a2[/a\] & b2[/b\]
+    C2 --- c2[/c\] & d2[/d\]
+    E2 --- e2[/e\] & f2[/f\]
+  end
+
+  x2 --> A2
+  w2 --> C2
+
+  classDef black fill:#888, stroke:#fff
+  classDef red fill:#f00, stroke:#fff
+  classDef invisible fill:#0000, stroke:#0000
+  classDef pointer stroke-dasharray: 5 5, fill:#0000
+  classDef black2 fill:#000, stroke:#fff
+
+  class A1,A2 black2
+  class B1,C1,E1,D2,C2,E2 black
+  class D1,B2 red
+  class R1,R2 invisible
+  class x1,w1,x2,w2 pointer
+```
+
+  * (2) - (5) sont préservées (à vérifier)
+  * `w` devient noir et cela nous ramène dans un des autres cas.
