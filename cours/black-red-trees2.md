@@ -288,10 +288,6 @@ graph TD
   class x1,w1,x2,w2 pointer
 ```
 
-  * (1) - (5) sont restaurées et on sort de la boucle.
-
-  **Complexité** Dans le cas 1 on remonte à deux niveaux dans l'arbre, dans les deux autres cas on s'arrête directement. Au pire on fait $`O(h) = O(\log n)`$ itérations.
-
   Voici comment se déroule la boucle :
 
   ```mermaid
