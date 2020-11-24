@@ -288,18 +288,20 @@ graph TD
   class x1,w1,x2,w2 pointer
 ```
 
-  Voici comment se déroule la boucle :
+Voici comment se déroule la boucle :
 
-  ```mermaid
-  graph TD
-    start((*)) --> 1[Cas 1] & 2[Cas 2] & 3[Cas 3] & 4[Cas 4]
-    1 --> 2 & 3 & 4
-    2 --> start & stop(("**"))
-    3 --> 4
-    4 --> stop
-  ```
+```mermaid
+graph TD
+  start((*)) --> 1[Cas 1] & 2[Cas 2] & 3[Cas 3] & 4[Cas 4]
+  1 --> 2 & 3 & 4
+  2 --> start & stop(("**"))
+  3 --> 4
+  4 --> stop
+```
 
-  **Complexité** Dans cas 2 `x` remonte un niveau dans l'arbre, dans les autres cas la boucle s'arrête. Donc au pire $`O(h) = O(\log n)`$.
+(1) - (5) sont restaurées et on sort de la boucle.
+
+**Complexité** Dans cas 2 `x` remonte un niveau dans l'arbre, dans les autres cas la boucle s'arrête. Donc au pire $`O(h) = O(\log n)`$.
 
 
-  **Conclusion** Il est possible de maintenir l'arbre équilibré sans augmenter la complexité des opérations `ajouter()` et `supprimer()`. Ainsi toutes les opérations s'exécutent en temps logarithmique.
+**Conclusion** Il est possible de maintenir l'arbre équilibré sans augmenter la complexité des opérations `ajouter()` et `supprimer()`. Ainsi toutes les opérations s'exécutent en temps logarithmique.

@@ -331,6 +331,4 @@ graph TD
   Cas3 --> stop
 ```
 
-* (1) - (5) sont restaurées et on sort de la boucle.
-
 **Complexité** Dans le cas 1 on remonte à deux niveaux dans l'arbre, dans les deux autres cas on s'arrête directement. Au pire on fait $`O(h) = O(\log n)`$ itérations.
