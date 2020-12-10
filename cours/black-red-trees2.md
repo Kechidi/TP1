@@ -69,7 +69,7 @@ supprimerCorrection(Noeud x) {
           w.gauche.couleur = N;
           w.couleur = R;
           rotationDroite(w);
-          x = x.pere.droit;
+          w = x.pere.droit;
         }
         // cas 4
         w.couleur = x.pere.couleur;
