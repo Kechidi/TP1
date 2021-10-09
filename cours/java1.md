@@ -318,7 +318,7 @@ class Directeur extends Employe { // Le directeur *est* un employé
 ```java
 Directeur boss = new Employe("Big Boss", 4000); // ERREUR
 
-Employe boss = new Employe("Big Boss", 4000, new Secretaire("Selina Kyle", 2500, 3)); // OK
+Employe boss = new Directeur("Big Boss", 4000, new Secretaire("Selina Kyle", 2500, 3)); // OK
 float p = boss.prime(); // 12000 (toujours typage dynamique)
 Secretaire s = boss.getSecretaire(); // ERREUR
 ```
