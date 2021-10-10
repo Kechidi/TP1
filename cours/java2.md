@@ -473,11 +473,11 @@ Opérations intermédiaires (`Stream -> Stream`) :
 interface Stream<T> {
   Stream<T> distinct();
   Stream<T> filter(Predicate<? super T> predicate);
-  Stream<T>	limit(long maxSize);
-  <R> Stream<R>	map(Function<? super T,? extends R> mapper);
-  Stream<T>	peek(Consumer<? super T> action);
-  Stream<T>	skip(long n);
-  Stream<T>	sorted();
+  Stream<T> limit(long maxSize);
+  <R> Stream<R> map(Function<? super T,? extends R> mapper);
+  Stream<T> peek(Consumer<? super T> action);
+  Stream<T> skip(long n);
+  Stream<T> sorted();
   ...
 }
 ```
