@@ -277,6 +277,13 @@ ajouterPomme(lp, p); // OK
 ajouterPomme(lf, p); // OK
 ```
 
+### Méthodes génériques
+
+```java
+class Util {
+  public static <T> void ajouterElement(List<? super T> l, T t) { ... }
+}
+```
 
 ## Expressions lambda
 
@@ -284,7 +291,7 @@ ajouterPomme(lf, p); // OK
 void afficherEmployesPlusAgesQue(List<Employe> personnel, int age) {
   for (Employe e : personnel) {
     if (e.getAge() > age) {
-      System.out.println(e.getName());
+      System.out.println(e.getNom());
     }
   }
 }
@@ -304,7 +311,7 @@ interface Testeur {
 void afficherEmployes(List<Employe> personnel, Testeur testeur) {
   for (Employe e : personnel) {
     if (testeur.test(e)) {
-      System.out.println(e.getName());
+      System.out.println(e.getNom());
     }
   }
 }
@@ -390,7 +397,7 @@ interface Supplier<T> {
 void afficherEmployes(List<Employe> personnel, Predicate<Employer> testeur) {
   for (Employe e : personnel) {
     if (testeur.test(e)) {
-      System.out.println(e.getName());
+      System.out.println(e.getNom());
     }
   }
 }
@@ -406,7 +413,7 @@ void traiterEmployes(List<Employe> personnel, Predicate<Employe> testeur, Consum
 }
 ...
 
-traiterEmployes(personnel, e -> e.getAge() < 40 && e.getSexe() == M, e -> System.out.println(e.getName()));
+traiterEmployes(personnel, e -> e.getAge() < 40 && e.getSexe() == M, e -> System.out.println(e.getNom()));
 traiterEmployes(personnel, e -> e.getSexe() == F, e -> e.setSalaire(1.2 * e.getSalaire()));
 ```
 
@@ -418,4 +425,72 @@ traiterEmployes(personnel, e -> e.getSexe() == F, e -> e.setSalaire(1.2 * e.getS
     if (testeur.test(e)) traitement.accept(e);
   }
 }
+```
+
+## Streams
+
+Motivation : parallélisme. L'itération externe (itérateurs) ne peut être que séquentielle.
+
+```java
+personnel.stream().filter(e -> e.getAge() > 40).map(Employe::getNom).forEach(System.out::println);
+
+double ageMoyenF = personnel.stream().filter(e -> e.getSexe() == F)
+  .mapToInt(Employe::getAge).average().getAsDouble();
+```
+
+Les streams ne remplacent pas les collections.
+  * Les collections stockent les données
+  * Les streams font passer les données par des pipelines
+
+Pipeline :
+  * Source
+  * Opérations intermédiaires
+  * Opération terminale
+
+Sources :
+
+```java
+// Collections
+Stream<Employe> s = presonnel.stream();
+
+// Tableaux
+Animal[] zoo = ...;
+Stream<Animal> s = Arrays.stream(zoo);
+
+// Canaux E/S
+Stream<String> s = Files.lines(Path.of("monfichier.txt"));
+
+// Générateurs
+IntStream s = IntStream.range(0, 100);
+
+Random rnd = new Random();
+IntStream s = IntStream.generate(r::nextInt);
+```
+
+Opérations intermédiaires (`Stream -> Stream`) :
+
+```java
+interface Stream<T> {
+  Stream<T> distinct();
+  Stream<T> filter(Predicate<? super T> predicate);
+  Stream<T>	limit(long maxSize);
+  <R> Stream<R>	map(Function<? super T,? extends R> mapper);
+  Stream<T>	peek(Consumer<? super T> action);
+  Stream<T>	skip(long n);
+  Stream<T>	sorted();
+  ...
+}
+```
+
+Opérations terminales :
+  * `forEach()`
+  * `reduce()`
+  * `collect()`
+  * `count()`, `sum()`, `average()`, `min()`, `max()` ...
+
+Parallélisme :
+
+```java
+personnel.parallelStream().filter(e -> e.getAge() > 40)...
+  .sequential()...parallel()... ;
 ```
