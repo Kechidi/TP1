@@ -250,7 +250,7 @@ s = somme(li); // OK
 
 ```mermaid
 classDiagram
-  Fruit <|- Pomme
+  Fruit <|-- Pomme
 ```
 
 ```java
@@ -275,4 +275,147 @@ Pomme p = ...;
 
 ajouterPomme(lp, p); // OK
 ajouterPomme(lf, p); // OK
+```
+
+
+## Expressions lambda
+
+```java
+void afficherEmployesPlusAgesQue(List<Employe> personnel, int age) {
+  for (Employe e : personnel) {
+    if (e.getAge() > age) {
+      System.out.println(e.getName());
+    }
+  }
+}
+```
+
+  * Tous les employés entre `age1` et `age2` ?
+  * Toutes les femmes plus jeunes que `age` ?
+
+Une méthode plus générale :
+
+```java
+interface Testeur {
+  boolean test(Employe e);
+}
+...
+
+void afficherEmployes(List<Employe> personnel, Testeur testeur) {
+  for (Employe e : personnel) {
+    if (testeur.test(e)) {
+      System.out.println(e.getName());
+    }
+  }
+}
+```
+
+Avec une classe :
+
+```java
+class TesteurAge implements Testeur {
+  private int age;
+
+  public Testeur(int age) {
+    this.age = age;
+  }
+
+  public boolean test(Employe e) {
+    return e.getAge() > age;
+  }
+}
+...
+
+afficherEmployes(personnel, new TesteurAge(30));
+```
+
+Avec une classe anonyme :
+
+```java
+afficherEmployes(personnel,
+  new Testeur() {
+    public boolean test(Employer e) {
+      return e.getAge() > 30;
+    }
+  }
+);
+```
+
+Avec une expression lambda :
+
+```java
+afficherEmployes(personnel, e -> e.getAge() > 30);
+```
+
+Les expressions lambda sont des implémentations d'interfaces fonctionnelles : interfaces avec une seule méthode abstraite (*Single Abstract Method, SAM*).
+
+Syntaxe :
+
+```
+(param1, param2, ..., param n) -> corps
+```
+
+  * On peut omettre le type des paramètres
+  * On peut omettre les parenthèses si un seul paramètre
+  * Le corps est une expression ou un bloc
+  * On peut utiliser `::`
+    * `e -> e.getAge() <=> Employe::getAge`
+    * `e -> System.out.println(e) <=> System.out::println`
+
+Interfaces fonctionnelles standards [java.util.function](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/package-summary.html)
+
+```java
+interface Predicate<T>  {
+  boolean test(T t);
+}
+
+interface Consumer<T> {
+  boolean void accept(T t);
+}
+
+interface Function<T, R> {
+  R apply(T t);
+}
+
+interface UnaryOperator<T> extends Function<T, T>;
+
+interface Supplier<T> {
+  T get();
+}
+
+...
+```
+
+```java
+void afficherEmployes(List<Employe> personnel, Predicate<Employer> testeur) {
+  for (Employe e : personnel) {
+    if (testeur.test(e)) {
+      System.out.println(e.getName());
+    }
+  }
+}
+```
+
+Ou une méthode encore plus générale :
+
+```java
+void traiterEmployes(List<Employe> personnel, Predicate<Employe> testeur, Consumer<Employe> traitement) {
+  for (Employe e : personnel) {
+    if (testeur.test(e)) traitement.accept(e);
+  }
+}
+...
+
+traiterEmployes(personnel, e -> e.getAge() < 40 && e.getSexe() == M, e -> System.out.println(e.getName()));
+traiterEmployes(personnel, e -> e.getSexe() == F, e -> e.setSalaire(1.2 * e.getSalaire()));
+```
+
+... et même générique :
+
+```java
+<T> void traiterElements(Iterable<T> elements, Predicate<T> testeur, Consumer<T> traitement) {
+  for (T e : elements) {
+    if (testeur.test(e)) traitement.accept(e);
+  }
+}
 ```
