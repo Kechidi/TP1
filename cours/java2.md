@@ -51,7 +51,7 @@ class HorlogeNumerique extends Horloge {
 ```java
 Horloge h = new Horloge(10, 15); // ERREUR
 
-List<Horloge> horloges = new ArrayList<Horloge>();
+List<Horloge> horloges = new ArrayList<>();
 horloges.add(new HorlogeAnalogique(12, 15));
 horloges.add(new HorlogeNumerique(18, 15));
 ...
@@ -365,7 +365,7 @@ Syntaxe :
   * On peut omettre le type des paramètres
   * On peut omettre les parenthèses si un seul paramètre
   * Le corps est une expression ou un bloc
-  * On peut utiliser `::`
+  * On peut utiliser `::` (références de méthodes)
     * `e -> e.getAge() <=> Employe::getAge`
     * `e -> System.out.println(e) <=> System.out::println`
 
@@ -420,7 +420,7 @@ traiterEmployes(personnel, e -> e.getSexe() == F, e -> e.setSalaire(1.2 * e.getS
 ... et même générique :
 
 ```java
-<T> void traiterElements(Iterable<T> elements, Predicate<T> testeur, Consumer<T> traitement) {
+<T> void traiterElements(Iterable<T> elements, Predicate<? super T> testeur, Consumer<? super T> traitement) {
   for (T e : elements) {
     if (testeur.test(e)) traitement.accept(e);
   }
@@ -485,8 +485,8 @@ interface Stream<T> {
 Opérations terminales :
   * `forEach()`
   * `reduce()`
-  * `collect()`
   * `count()`, `sum()`, `average()`, `min()`, `max()` ...
+  * `collect()` ...
 
 Parallélisme :
 
