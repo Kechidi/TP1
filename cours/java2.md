@@ -377,7 +377,7 @@ interface Predicate<T>  {
 }
 
 interface Consumer<T> {
-  boolean void accept(T t);
+  void accept(T t);
 }
 
 interface Function<T, R> {
