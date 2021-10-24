@@ -1,18 +1,79 @@
 # Complexité des algorithmes 1
 
-Rappel sur le tri par insertion :
+## Introduction
 
-1. Le cas le plus favorable : tableau trié.
+Analyser un algorithme : prévoir les ressources nécessaires à son exécution. Les ressources peuvent être :
+  * mémoire utilisée
+  * bande passante
+  * ...
+  * temps d'exécution (le plus souvent)
 
-    $`T(n) = a n + b`$ - fonction linéaire
+Analyse asymptotique : moyen de comparer les performances relatives.
 
-2. Le cas le plus défavorable : tableau trié en sens inverse
+Pour analyser un algorithme, il nous faut un modèle de machine. On utilisera une *Random Access Machine* (RAM) :
+  * mémoire centrale (temps d'accès constant)
+  * processeur unique
+  * jeu d'instructions (temps d'exécution constant)
+  * exécution séquentielle
 
-    $`T(n) = a' n^2 + b' n + c'`$ - fonction quadratique
+## Temps d'exécution
+
+En général, le temps d'exécution dépend de la taille du problème : $`n \rightarrow T(n)`$. La taille peut être :
+  * nombre d'éléments du tableau (tri)
+  * nombre de bits (multiplication)
+  * nombre d'arêtes et/ou sommets (graphes)
+  * ...
+
+Problème : le comportement d'un algorithme peut être très différent sur des entrées différentes (même de la même taille). C'est pourquoi on utilise :
+  * temps d'exécution dans le pire des cas
+  * temps d'exécution moyenne
+
+## Analyse du tri par insertion
+
+Rappel de l'algorithme sur un exemple : `[7, 6, 2, 8, 1, 4, 5]`
+
+```
+ALGORITHME TriInsertion
+ENTREE :
+  a - un tableau
+SORTIE :
+  a trié
+TAILLE :
+  n -le nombre d'éléments du tableau
+
+DÉBUT
+  POUR i de 1 à n - 1 FAIRE             // 1
+    cle <- a[i]                         // 2
+    j <- i - 1                          // 3
+    TANTQUE j >= 0 et a[j] > cle FAIRE  // 4
+      a[j + 1] <- a[j]                  // 5
+      j <- j - 1                        // 6
+    FINTANTQUE
+    a[j + 1] <- cle                     // 7
+  FINPOUR
+FIN
+```
+
+Soit $`c_k`$ le coût (le temps d'exécution) de la ligne $`k`$. Soit $`t_i`$ le nombre d'exécutions du test de la boucle de ligne 4 pour un `i` donné.
+
+---
+
+**Exercice** Exprimer le temps d'exécution total en fonction de $`n`$, $`c_k`$ et $`t_i`$.
+
+---
+
+
+1. Le cas le plus favorable
+
+    $`T(n) = a n + b = \Theta(n)`$ - fonction linéaire
+
+2. Le cas le plus défavorable
+
+    $`T(n) = a' n^2 + b' n + c' = \Theta(n^2)`$ - fonction quadratique
 
 3. Le cas moyen
 
-    $`T(n) = a'' n^2 + b'' n + c''`$ - fonction quadratique
+    $`T(n) = a'' n^2 + b'' n + c'' = \Theta(n^2)`$ - fonction quadratique
 
 
 Le plus souvent on considère le temps d'exécution dans le pire des cas parce que :
