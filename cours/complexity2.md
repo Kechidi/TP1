@@ -8,6 +8,8 @@ Un algorithme basé sur le principe « diviser pour régner » :
 
   * Combiner les solutions des sous-problèmes pour obtenir la solution du problème initial.
 
+Rappel de l'algorithme sur un exemple : `[5, 2, 4, 6, 1, 3, 2, 6]`
+
 ```
 ALGORITHME TriFusion(a, debut, fin)
 ENTRÉE :
