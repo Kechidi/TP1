@@ -49,8 +49,8 @@ graph TD
   4((4)) --- s20[ ] & s21[ ]
 
 
-  classDef black fill:#000, stroke:#fff;
-  classDef red fill:#f00, stroke:#fff;
+  classDef black fill:#000, stroke:#fff, color:#fff;
+  classDef red fill:#f00, stroke:#fff, color:#fff;
   class 50,80,26,40,92,30,36,44,54,74,s01,s02,12,22,s03,s04,s05,s06,s07,s08,s09,s10,s11,s12,s13,s14,s15,s16,s17,s18,s19,s20,s21 black;
   class 32,58,18,28,38,68,76,4 red;
 ```
