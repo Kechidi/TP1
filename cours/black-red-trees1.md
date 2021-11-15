@@ -236,8 +236,8 @@ graph TD
 
   z2[z] -.-> C2
 
-  classDef black fill:#000, stroke:#fff
-  classDef red fill:#f00, stroke:#fff
+  classDef black fill:#000, stroke:#fff, color:#fff;
+  classDef red fill:#f00, stroke:#fff, color:#fff;
   classDef invisible fill:#0000, stroke:#0000
   classDef pointer stroke-dasharray: 5 5, fill:#0000
   class C1,A2,D2 black
@@ -273,8 +273,8 @@ graph TD
   y2[y] -.-> D2
   z2[z] -.-> A2
 
-  classDef black fill:#000, stroke:#fff
-  classDef red fill:#f00, stroke:#fff
+  classDef black fill:#000, stroke:#fff, color:#fff;
+  classDef red fill:#f00, stroke:#fff, color:#fff;
   classDef invisible fill:#0000, stroke:#0000
   classDef pointer stroke-dasharray: 5 5, fill:#0000
   class C1,D1,C2,D2 black
@@ -309,8 +309,8 @@ graph TD
 
   z2[z] -.-> A2
 
-  classDef black fill:#000, stroke:#fff
-  classDef red fill:#f00, stroke:#fff
+  classDef black fill:#000, stroke:#fff, color:#fff;
+  classDef red fill:#f00, stroke:#fff, color:#fff;
   classDef invisible fill:#0000, stroke:#0000
   classDef pointer stroke-dasharray: 5 5, fill:#0000
   class C1,D1,B2,D2 black
