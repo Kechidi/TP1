@@ -233,7 +233,7 @@ supprimer(Noeud z) {
 **Complexité :** $`O(h)`$
 
 
-**Conclusion :** Toutes les opérations s'effectuent en $`O(h)`$. Nous avons donc intérêt de maintenir l'arbre pas trop haut ($`h = \Theta(\log h)`$ et pas $`\Theta(n)`$).
+**Conclusion :** Toutes les opérations s'effectuent en $`O(h)`$. Nous avons donc intérêt de maintenir l'arbre pas trop haut ($`h = \Theta(\log n)`$ et pas $`\Theta(n)`$).
 
 
 ## Comparaison avec des structures linéaires
